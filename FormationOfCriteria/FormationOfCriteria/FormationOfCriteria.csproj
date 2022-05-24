@@ -135,14 +135,11 @@
     <Compile Include="Model\Vedomosti.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="View\AddingAspect.xaml.cs">
+      <DependentUpon>AddingAspect.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\AddingCriteria.xaml.cs">
       <DependentUpon>AddingCriteria.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\EditingCriteria.xaml.cs">
-      <DependentUpon>EditingCriteria.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\RemovingCriteria.xaml.cs">
-      <DependentUpon>RemovingCriteria.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -156,15 +153,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\AddingAspect.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\AddingCriteria.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\EditingCriteria.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\RemovingCriteria.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -207,12 +200,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="View\delete-ver-68461CA5187CD2C6AF08786467085F2B.png" />
+    <Resource Include="View\add-ver-1988C3CC1384A3AC9B9A4129183248F3.png" />
+    <Resource Include="View\page_save-ver-7AC72068E24479BECB4E524B43C0363A.png" />
+    <Resource Include="page_edit-ver-47370A0500CB9048A5110BD04047BDAB.png" />
     <None Include="Resources\add-ver-1988C3CC1384A3AC9B9A4129183248F3.png" />
     <None Include="Resources\delete-ver-68461CA5187CD2C6AF08786467085F2B.png" />
-    <Resource Include="View\page_save-ver-7AC72068E24479BECB4E524B43C0363A.png" />
     <None Include="Resources\page_save-ver-7AC72068E24479BECB4E524B43C0363A.png" />
-    <Resource Include="Icons8_flat_delete_generic.svg.png" />
     <Resource Include="delete-ver-68461CA5187CD2C6AF08786467085F2B.png" />
+    <Resource Include="add-ver-1988C3CC1384A3AC9B9A4129183248F3.png" />
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -223,7 +219,6 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-    <Resource Include="page_edit-ver-47370A0500CB9048A5110BD04047BDAB.png" />
     <None Include="Resources\page_edit-ver-47370A0500CB9048A5110BD04047BDAB.png" />
   </ItemGroup>
   <ItemGroup />

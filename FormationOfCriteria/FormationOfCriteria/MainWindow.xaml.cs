@@ -35,17 +35,7 @@ namespace FormationOfCriteria
             add.Show();
         }
 
-        private void BtnEditing_Click(object sender, RoutedEventArgs e)
-        {
-            View.EditingCriteria edit = new View.EditingCriteria();
-            edit.Show();
-        }
 
-        private void btnDelete_Click(object sender, RoutedEventArgs e)
-        {
-            View.RemovingCriteria delete = new View.RemovingCriteria();
-            delete.Show();
-        }
 
         private void ButtonSaveKriteria_Click(object sender, RoutedEventArgs e)
         {

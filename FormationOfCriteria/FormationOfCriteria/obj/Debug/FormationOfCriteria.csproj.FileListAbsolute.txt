@@ -21,9 +21,7 @@ E:\Visual2019practix\FormationOfCriteria\FormationOfCriteria\obj\Debug\Formation
 E:\Visual2019practix\FormationOfCriteria\FormationOfCriteria\obj\Debug\FormationOfCriteria.csproj.CopyComplete
 E:\Visual2019practix\FormationOfCriteria\FormationOfCriteria\obj\Debug\View\AddingCriteria.g.cs
 E:\Visual2019practix\FormationOfCriteria\FormationOfCriteria\obj\Debug\View\AddingCriteria.baml
-E:\Visual2019practix\FormationOfCriteria\FormationOfCriteria\obj\Debug\View\EditingCriteria.g.cs
-E:\Visual2019practix\FormationOfCriteria\FormationOfCriteria\obj\Debug\View\RemovingCriteria.g.cs
-E:\Visual2019practix\FormationOfCriteria\FormationOfCriteria\obj\Debug\View\EditingCriteria.baml
-E:\Visual2019practix\FormationOfCriteria\FormationOfCriteria\obj\Debug\View\RemovingCriteria.baml
 E:\Visual2019practix\FormationOfCriteria\FormationOfCriteria\obj\Debug\FormationOfCriteria.csproj.AssemblyReference.cache
 E:\Visual2019practix\FormationOfCriteria\FormationOfCriteria\obj\Debug\App.baml
+E:\Visual2019practix\FormationOfCriteria\FormationOfCriteria\obj\Debug\View\AddingAspect.g.cs
+E:\Visual2019practix\FormationOfCriteria\FormationOfCriteria\obj\Debug\View\AddingAspect.baml

@@ -62,5 +62,16 @@ namespace FormationOfCriteria.View
         {
 
         }
+
+        private void AddPlus_Click(object sender, RoutedEventArgs e)
+        {
+            View.AddingAspect add = new View.AddingAspect();
+            add.Show();
+        }
+
+        private void TextBoxNameTextA1_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
