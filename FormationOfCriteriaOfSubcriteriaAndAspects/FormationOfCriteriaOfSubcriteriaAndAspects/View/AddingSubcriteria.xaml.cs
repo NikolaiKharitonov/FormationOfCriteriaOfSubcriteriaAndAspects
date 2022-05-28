@@ -19,32 +19,44 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
     /// </summary>
     public partial class AddingSubcriteria : Window
     {
-        public AddingSubcriteria()
+        private Model.Criteria _criteria { get; set; }
+        public AddingSubcriteria(Model.Criteria criteria)
         {
             InitializeComponent();
+            _criteria = criteria;
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            using (Model.ProductionPracticeEntities db = new Model.ProductionPracticeEntities())
+            if (TitleTextBox.Text == "") //Проверка на пустые поля                           
             {
-                var sub = new Model.SubCriteria()
+                if (TotalScoresForAllAspectsTextBox.Text == "")
                 {
-                    Title = TitleTextBox.Text,
-                    TotalScoresForAllAspects = Convert.ToInt32(TotalScoresForAllAspectsTextBox.Text)
-                };
-                db.SubCriteria.Add(sub);
-                db.SaveChanges();
-
-                var asp = new Model.Aspect()
-                {
-                    IdSubCriteria = sub.IdSubCriteria
-                };
-                db.Aspect.Add(asp);
-                db.SaveChanges();
-                MessageBox.Show("Субкритерий добавлен");
-                this.DialogResult = true;
+                    MessageBox.Show("Должен быть указан Макс. балл");
+                    return;
+                }
+                MessageBox.Show("Должно быть указано имя для критерия");
+                return;
             }
+            var criteria = Controller.Connect.GetContext().SubCriteria;
+            foreach (var criter in criteria)
+            {
+                if (TitleTextBox.Text == criter.Title) //Проверка на идентичность
+                {
+                    MessageBox.Show("Данный критерий уже существует");
+                    return;
+                }
+            }
+            var sub = new Model.SubCriteria()
+            {
+                Title = TitleTextBox.Text,
+                TotalScoresForAllAspects = Convert.ToDouble(TotalScoresForAllAspectsTextBox.Text),
+                IdCriteria = _criteria.IdCriteria
+            };
+            Controller.Connect.GetContext().SubCriteria.Add(sub);
+            Controller.Connect.GetContext().SaveChanges();
+            MessageBox.Show("Субкритерий добавлен");
+            this.DialogResult = true;
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

@@ -4,13 +4,13 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище ProductionPracticeModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище ProductionPracticeModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Aspect">
           <Key>
             <PropertyRef Name="IdAspect" />
           </Key>
           <Property Name="IdAspect" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Title" Type="varchar" MaxLength="50" />
+          <Property Name="Title" Type="varchar(max)" />
           <Property Name="IdSubCriteria" Type="int" />
           <Property Name="NumberOfPoints" Type="float" />
           <Property Name="IdTypeAspect" Type="int" />
@@ -21,7 +21,7 @@
             <PropertyRef Name="IdCriteria" />
           </Key>
           <Property Name="IdCriteria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Title" Type="varchar" MaxLength="50" />
+          <Property Name="Title" Type="varchar" MaxLength="150" />
           <Property Name="IdProModule" Type="int" />
           <Property Name="MaxValue" Type="float" />
         </EntityType>
@@ -116,7 +116,7 @@
             <PropertyRef Name="IdSubCriteria" />
           </Key>
           <Property Name="IdSubCriteria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Title" Type="varchar" MaxLength="50" />
+          <Property Name="Title" Type="varchar(max)" />
           <Property Name="IdCriteria" Type="int" />
           <Property Name="TotalScoresForAllAspects" Type="float" />
         </EntityType>
@@ -189,6 +189,18 @@
             </Principal>
             <Dependent Role="Aspect">
               <PropertyRef Name="IdTypeAspect" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Criteria_ProModule">
+          <End Role="ProModule" Type="Self.ProModule" Multiplicity="0..1" />
+          <End Role="Criteria" Type="Self.Criteria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProModule">
+              <PropertyRef Name="IdProModule" />
+            </Principal>
+            <Dependent Role="Criteria">
+              <PropertyRef Name="IdProModule" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -399,6 +411,10 @@
             <End Role="TypeAspect" EntitySet="TypeAspect" />
             <End Role="Aspect" EntitySet="Aspect" />
           </AssociationSet>
+          <AssociationSet Name="FK_Criteria_ProModule" Association="Self.FK_Criteria_ProModule">
+            <End Role="ProModule" EntitySet="ProModule" />
+            <End Role="Criteria" EntitySet="Criteria" />
+          </AssociationSet>
           <AssociationSet Name="FK_DescriptionOfJudgeAspects_Aspect" Association="Self.FK_DescriptionOfJudgeAspects_Aspect">
             <End Role="Aspect" EntitySet="Aspect" />
             <End Role="DescriptionOfJudgeAspects" EntitySet="DescriptionOfJudgeAspects" />
@@ -460,8 +476,7 @@
             <End Role="Vedomosti" EntitySet="Vedomosti" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ProductionPracticeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -470,7 +485,7 @@
             <PropertyRef Name="IdAspect" />
           </Key>
           <Property Name="IdAspect" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="IdSubCriteria" Type="Int32" />
           <Property Name="NumberOfPoints" Type="Double" />
           <Property Name="IdTypeAspect" Type="Int32" />
@@ -485,10 +500,11 @@
             <PropertyRef Name="IdCriteria" />
           </Key>
           <Property Name="IdCriteria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="IdProModule" Type="Int32" />
           <Property Name="MaxValue" Type="Double" />
           <NavigationProperty Name="SubCriteria" Relationship="Self.FK_SubCriteria_Criteria" FromRole="Criteria" ToRole="SubCriteria" />
+          <NavigationProperty Name="ProModule" Relationship="ProductionPracticeModel.FK_Criteria_ProModule" FromRole="Criteria" ToRole="ProModule" />
         </EntityType>
         <EntityType Name="DescriptionOfJudgeAspects">
           <Key>
@@ -532,6 +548,7 @@
           <Property Name="IdProModule" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Exam" Relationship="Self.FK_Exam_ProModule" FromRole="ProModule" ToRole="Exam" />
+          <NavigationProperty Name="Criteria" Relationship="ProductionPracticeModel.FK_Criteria_ProModule" FromRole="ProModule" ToRole="Criteria" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -600,7 +617,7 @@
             <PropertyRef Name="IdSubCriteria" />
           </Key>
           <Property Name="IdSubCriteria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="IdCriteria" Type="Int32" />
           <Property Name="TotalScoresForAllAspects" Type="Double" />
           <NavigationProperty Name="Aspect" Relationship="Self.FK_Aspect_SubCriteria" FromRole="SubCriteria" ToRole="Aspect" />
@@ -953,7 +970,23 @@
             <End Role="SystemUser" EntitySet="SystemUser" />
             <End Role="Teachers" EntitySet="Teachers" />
           </AssociationSet>
+          <AssociationSet Name="FK_Criteria_ProModule" Association="ProductionPracticeModel.FK_Criteria_ProModule">
+            <End Role="ProModule" EntitySet="ProModule" />
+            <End Role="Criteria" EntitySet="Criteria" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_Criteria_ProModule">
+          <End Type="ProductionPracticeModel.ProModule" Role="ProModule" Multiplicity="0..1" />
+          <End Type="ProductionPracticeModel.Criteria" Role="Criteria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProModule">
+              <PropertyRef Name="IdProModule" />
+            </Principal>
+            <Dependent Role="Criteria">
+              <PropertyRef Name="IdProModule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

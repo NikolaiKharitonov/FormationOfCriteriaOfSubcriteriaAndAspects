@@ -44,6 +44,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
@@ -154,6 +155,9 @@
     <Compile Include="View\EditingSubcriteria.xaml.cs">
       <DependentUpon>EditingSubcriteria.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\StudentsAndTeachers.xaml.cs">
+      <DependentUpon>StudentsAndTeachers.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Subcriteria.xaml.cs">
       <DependentUpon>Subcriteria.xaml</DependentUpon>
     </Compile>
@@ -198,6 +202,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\StudentsAndTeachers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Subcriteria.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -239,6 +247,20 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\link_edit-ver-6B5A0169229B7AE7CFA49101CA39F16D.png" />
+    <Resource Include="View\add-ver-1988C3CC1384A3AC9B9A4129183248F3.png" />
+    <Resource Include="View\delete-ver-68461CA5187CD2C6AF08786467085F2B.png" />
+    <Resource Include="View\page_save-ver-7AC72068E24479BECB4E524B43C0363A.png" />
+    <Resource Include="add-ver-1988C3CC1384A3AC9B9A4129183248F3.png" />
+    <Resource Include="link_edit-ver-6B5A0169229B7AE7CFA49101CA39F16D.png" />
+    <Resource Include="delete-ver-68461CA5187CD2C6AF08786467085F2B.png" />
+    <None Include="Resources\add-ver-1988C3CC1384A3AC9B9A4129183248F3.png" />
+    <None Include="Resources\link_edit-ver-6B5A0169229B7AE7CFA49101CA39F16D.png" />
+    <None Include="Resources\page_save-ver-7AC72068E24479BECB4E524B43C0363A.png" />
+    <None Include="Resources\page_edit-ver-47370A0500CB9048A5110BD04047BDAB.png" />
+    <None Include="Resources\delete-ver-68461CA5187CD2C6AF08786467085F2B.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Model\Model1.Context.tt">

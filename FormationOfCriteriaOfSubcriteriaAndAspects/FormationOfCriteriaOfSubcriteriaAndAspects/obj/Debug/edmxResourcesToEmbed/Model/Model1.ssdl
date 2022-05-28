@@ -16,7 +16,7 @@
       <PropertyRef Name="IdCriteria" />
     </Key>
     <Property Name="IdCriteria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Title" Type="varchar" MaxLength="50" />
+    <Property Name="Title" Type="varchar" MaxLength="150" />
     <Property Name="IdProModule" Type="int" />
     <Property Name="MaxValue" Type="float" />
   </EntityType>

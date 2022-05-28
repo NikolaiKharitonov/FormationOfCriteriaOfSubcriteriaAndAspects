@@ -26,30 +26,36 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            using (Model.ProductionPracticeEntities db = new Model.ProductionPracticeEntities())
+            bool validComplete = true;
+            if (TitleTextBox.Text == "") //Проверка на пустые поля                           
+            {
+                if (ValueTextBox.Text == "")
+                {
+                    MessageBox.Show("Должно быть указано имя для критерия");
+                    return;
+                }
+                MessageBox.Show("Должен быть указан Макс. балл");
+                return;
+            }
+            var criteria = Controller.Connect.GetContext().Criteria;
+            foreach (var criter in criteria)
+            {
+                if (TitleTextBox.Text == criter.Title) //Проверка на идентичность
+                {
+                    MessageBox.Show("Данный критерий уже существует");
+                    validComplete = false;
+                    return;
+                }
+            }
+            if (validComplete)
             {
                 var crit = new Model.Criteria()
                 {
                     Title = TitleTextBox.Text,
-                    MaxValue = Convert.ToInt32(ValueTextBox.Text)
+                    MaxValue = Convert.ToDouble(ValueTextBox.Text)
                 };
-                db.Criteria.Add(crit);
-                db.SaveChanges();
-
-                var sub = new Model.SubCriteria()
-                {
-                    IdCriteria = crit.IdCriteria
-                };
-                db.SubCriteria.Add(sub);
-                db.SaveChanges();
-
-                var asp = new Model.Aspect()
-                {
-                    IdSubCriteria = sub.IdSubCriteria
-                };
-                db.Aspect.Add(asp);
-                db.SaveChanges();
-                MessageBox.Show("Критерий добавлен");
+                Controller.Connect.GetContext().Criteria.Add(crit);
+                Controller.Connect.GetContext().SaveChanges();
                 this.DialogResult = true;
             }
         }

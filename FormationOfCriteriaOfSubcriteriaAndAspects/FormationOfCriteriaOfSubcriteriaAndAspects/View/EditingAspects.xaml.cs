@@ -36,6 +36,25 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
+            if (TitleTextBox.Text == "") //Проверка на пустые поля                           
+            {
+                if (NumberOfPointsTextBox.Text == "")
+                {
+                    MessageBox.Show("Должен быть указан Макс. балл");
+                    return;
+                }
+                MessageBox.Show("Должно быть указано имя для критерия");
+                return;
+            }
+            var criteria = Controller.Connect.GetContext().Aspect;
+            foreach (var criter in criteria)
+            {
+                if (TitleTextBox.Text == criter.Title) //Проверка на идентичность
+                {
+                    MessageBox.Show("Данный критерий уже существует");
+                    return;
+                }
+            }
             aspect.Title = TitleTextBox.Text;
             aspect.NumberOfPoints = Convert.ToDouble(NumberOfPointsTextBox.Text);
             aspect.Description = DescriptionTextBox.Text;
@@ -46,6 +65,32 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = false;
+        }
+
+        private void RemoveDescriptionlButton_Click(object sender, RoutedEventArgs e)
+        {
+            blok2.Visibility = Visibility.Hidden;
+            DescriptionTextBox.Visibility = Visibility.Hidden;
+            RemoveDescriptionlButton.Visibility = Visibility.Hidden;
+        }
+
+        private void DescriptionButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (TitleTextBox.Text == "" || NumberOfPointsTextBox.Text == "")
+            {
+                MessageBox.Show("Заполните название и баллы");
+            }
+            else
+            {
+                blok2.Visibility = Visibility.Visible;
+                DescriptionTextBox.Visibility = Visibility.Visible;
+                RemoveDescriptionlButton.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

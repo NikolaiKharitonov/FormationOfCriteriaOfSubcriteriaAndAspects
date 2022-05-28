@@ -34,6 +34,25 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
         }
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
+            if (TitleTextBox.Text == "") //Проверка на пустые поля                           
+            {
+                if (ValueTextBox.Text == "")
+                {
+                    MessageBox.Show("Должен быть указан Макс. балл");
+                    return;
+                }
+                MessageBox.Show("Должно быть указано имя для критерия");
+                return;
+            }
+            var crit = Controller.Connect.GetContext().Criteria;
+            foreach (var criter in crit)
+            {
+                if (TitleTextBox.Text == criter.Title) //Проверка на идентичность
+                {
+                    MessageBox.Show("Данный критерий уже существует");
+                    return;
+                }
+            }
             criteria.Title = TitleTextBox.Text;
             criteria.MaxValue = Convert.ToDouble(ValueTextBox.Text);
             Controller.Connect.GetContext().SaveChanges();
@@ -43,11 +62,6 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = false;
-        }
-
-        private void TitleTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
         }
     }
 }

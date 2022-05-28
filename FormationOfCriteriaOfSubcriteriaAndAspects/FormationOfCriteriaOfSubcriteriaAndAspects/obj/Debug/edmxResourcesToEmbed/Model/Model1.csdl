@@ -5,7 +5,7 @@
       <PropertyRef Name="IdAspect" />
     </Key>
     <Property Name="IdAspect" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="IdSubCriteria" Type="Int32" />
     <Property Name="NumberOfPoints" Type="Double" />
     <Property Name="IdTypeAspect" Type="Int32" />
@@ -20,7 +20,7 @@
       <PropertyRef Name="IdCriteria" />
     </Key>
     <Property Name="IdCriteria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="IdProModule" Type="Int32" />
     <Property Name="MaxValue" Type="Double" />
     <NavigationProperty Name="SubCriteria" Relationship="Self.FK_SubCriteria_Criteria" FromRole="Criteria" ToRole="SubCriteria" />
@@ -135,7 +135,7 @@
       <PropertyRef Name="IdSubCriteria" />
     </Key>
     <Property Name="IdSubCriteria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="IdCriteria" Type="Int32" />
     <Property Name="TotalScoresForAllAspects" Type="Double" />
     <NavigationProperty Name="Aspect" Relationship="Self.FK_Aspect_SubCriteria" FromRole="SubCriteria" ToRole="Aspect" />

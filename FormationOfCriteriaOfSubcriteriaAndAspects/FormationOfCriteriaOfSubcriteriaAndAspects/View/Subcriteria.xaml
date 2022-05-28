@@ -6,32 +6,50 @@
         xmlns:local="clr-namespace:FormationOfCriteriaOfSubcriteriaAndAspects.View"
         mc:Ignorable="d"
         Title="Subcriteria" Height="450" Width="800">
-    <Border MinWidth="400" Margin="15,15,15,15" Background="White" VerticalAlignment="Top" Padding="30" MaxWidth="750" CornerRadius="10" Height="440">
+    <Border MinWidth="400" Margin="15,15,15,15" Background="#F0F0F0" VerticalAlignment="Top" Padding="30" MaxWidth="750" CornerRadius="10" Height="440">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="20"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="28"/>
+                <RowDefinition Height="282"/>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
-
-            <DataGrid x:Name="DataGridSubCriteria" AutoGenerateColumns="False" Grid.Row="1">
+            <TextBlock x:Name="Header" Grid.Row="0" Text="Формирование Подкритерия" FontFamily="Microsoft Sans Serif" FontSize="20" HorizontalAlignment="Center" Margin="0,0,0,0" Width="280"/>
+            <DataGrid x:Name="DataGridSubCriteria" AutoGenerateColumns="False" BorderThickness="0" Margin="0,11.2,0.4,0.2" Grid.Row="1" IsReadOnly="True">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Название Субкритерия" Width="260" Binding="{Binding Title}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Общие баллы по всем аспектам" Width="260" Binding="{Binding TotalScoresForAllAspects}"></DataGridTextColumn>
-                    <DataGridTemplateColumn Width="167">
+                    <DataGridTextColumn Header="Название Субкритерия" FontSize="15" Width="475" Binding="{Binding Title}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Общие баллы" FontSize="15" Width="86" Binding="{Binding TotalScoresForAllAspects}"></DataGridTextColumn>
+                    <DataGridTemplateColumn Width="35">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="Добавить аспекты" Name="AspectButton" Click="AspectButton_Click"></Button>
+                                <Button Name="AspectButton" ToolTip="Добавить аспекты" BorderThickness="0" Click="AspectButton_Click">
+                                    <Image Source="add-ver-1988C3CC1384A3AC9B9A4129183248F3.png" Width="20"></Image>
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="35">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button x:Name="EditCriteria" ToolTip="Редактирование" BorderThickness="0" Click="EditCriteria_Click">
+                                    <Image Source="link_edit-ver-6B5A0169229B7AE7CFA49101CA39F16D.png" Width="20"></Image>
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="35">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button x:Name="RemoveCriteria" BorderThickness="0" ToolTip="Удаление" Click="RemoveCriteria_Click">
+                                    <Image Source="delete-ver-68461CA5187CD2C6AF08786467085F2B.png" Width="20"></Image>
+                                </Button>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="500" Grid.Row="2">
-                <Button x:Name="AddCriteriaBut" Content="Добавить" FontSize="15" Width="130" Height="30" Click="AddCriteriaBut_Click"></Button>
-                <Button x:Name="EditCriteria" Content="Редактировать" FontSize="15" Width="130" Height="30" Margin="10,0,0,0" Click="EditCriteria_Click"></Button>
-                <Button x:Name="RemoveCriteria" Content="Удалить" FontSize="15" Width="130" Height="30" Margin="10,0,0,0" Click="RemoveCriteria_Click"></Button>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="139" Grid.Row="2" Margin="510,0.4,41.4,0">
+                <Button x:Name="AddCriteriaBut" Content="Добавление" Background="#a6caf0" FontSize="15" Width="130" Height="30" Click="AddCriteriaBut_Click"></Button>
             </StackPanel>
         </Grid>
     </Border>

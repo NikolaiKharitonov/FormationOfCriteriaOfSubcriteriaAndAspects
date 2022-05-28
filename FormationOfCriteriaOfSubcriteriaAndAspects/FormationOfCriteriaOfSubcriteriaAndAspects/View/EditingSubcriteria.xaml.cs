@@ -35,6 +35,25 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
+            if (TitleTextBox.Text == "") //Проверка на пустые поля                           
+            {
+                if (TotalScoresForAllAspectsTextBox.Text == "")
+                {
+                    MessageBox.Show("Должен быть указан Макс. балл");
+                    return;
+                }
+                MessageBox.Show("Должно быть указано имя для критерия");
+                return;
+            }
+            var criteria = Controller.Connect.GetContext().SubCriteria;
+            foreach (var criter in criteria)
+            {
+                if (TitleTextBox.Text == criter.Title) //Проверка на идентичность
+                {
+                    MessageBox.Show("Данный критерий уже существует");
+                    return;
+                }
+            }
             subcriteria.Title = TitleTextBox.Text;
             subcriteria.TotalScoresForAllAspects = Convert.ToDouble(TotalScoresForAllAspectsTextBox.Text);
             Controller.Connect.GetContext().SaveChanges();

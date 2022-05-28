@@ -18,6 +18,7 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.Model
         public ProModule()
         {
             this.Exam = new HashSet<Exam>();
+            this.Criteria = new HashSet<Criteria>();
         }
     
         public int IdProModule { get; set; }
@@ -25,5 +26,7 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.Model
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Exam> Exam { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Criteria> Criteria { get; set; }
     }
 }

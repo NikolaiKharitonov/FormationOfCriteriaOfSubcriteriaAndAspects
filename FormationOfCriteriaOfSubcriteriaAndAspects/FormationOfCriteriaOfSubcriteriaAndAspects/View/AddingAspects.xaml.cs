@@ -19,38 +19,72 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
     /// </summary>
     public partial class AddingAspects : Window
     {
-        public AddingAspects()
+        private Model.SubCriteria _subCriteria { get; set; }
+        public AddingAspects(Model.SubCriteria subCriteria)
         {
             InitializeComponent();
+            _subCriteria = subCriteria;
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            using (Model.ProductionPracticeEntities db = new Model.ProductionPracticeEntities())
+            if (TitleTextBox.Text == "") //Проверка на пустые поля                           
             {
-                var add = new Model.Aspect()
+                if (DescriptionTextBox.Text == "")
                 {
-                    Title = TitleTextBox.Text,
-                    Description = DescriptionTextBox.Text,
-                    NumberOfPoints = Convert.ToInt32(NumberOfPointsTextBox.Text)
-                };
-                try
-                {
-                    db.Aspect.Add(add);
-                    db.SaveChanges();
-                    this.DialogResult = true;
+                    MessageBox.Show("Должен быть указан Макс. балл");
+                    return;
                 }
-                catch (Exception ex)
+                MessageBox.Show("Должно быть указано имя для критерия");
+                return;
+            }
+            var criteria = Controller.Connect.GetContext().Aspect;
+            foreach (var criter in criteria)
+            {
+                if (TitleTextBox.Text == criter.Title) //Проверка на идентичность
                 {
-                    MessageBox.Show(ex.ToString());
-                    this.DialogResult = false;
+                    MessageBox.Show("Данный критерий уже существует");
+                    return;
                 }
             }
+
+            var add = new Model.Aspect()
+            {
+                Title = TitleTextBox.Text,
+                Description = DescriptionTextBox.Text,
+                NumberOfPoints = Convert.ToDouble(NumberOfPointsTextBox.Text),
+                IdSubCriteria = _subCriteria.IdSubCriteria
+            };
+            Controller.Connect.GetContext().Aspect.Add(add);
+            Controller.Connect.GetContext().SaveChanges();
+            MessageBox.Show("Данные сохранены");
+            this.DialogResult = true;
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = false;
+        }
+
+        private void DescriptionButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (TitleTextBox.Text == "" || NumberOfPointsTextBox.Text == "")
+            {
+                MessageBox.Show("Заполните название и баллы");
+            }
+            else
+            {
+                blok2.Visibility = Visibility.Visible;
+                DescriptionTextBox.Visibility = Visibility.Visible;
+                RemoveDescriptionlButton.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void RemoveDescriptionlButton_Click(object sender, RoutedEventArgs e)
+        {
+            blok2.Visibility = Visibility.Hidden;
+            DescriptionTextBox.Visibility = Visibility.Hidden;
+            RemoveDescriptionlButton.Visibility = Visibility.Hidden;
         }
     }
 }

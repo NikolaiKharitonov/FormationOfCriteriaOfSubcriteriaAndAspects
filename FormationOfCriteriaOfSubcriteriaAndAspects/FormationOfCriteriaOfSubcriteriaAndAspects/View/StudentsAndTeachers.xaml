@@ -1,0 +1,81 @@
+﻿<Window x:Class="FormationOfCriteriaOfSubcriteriaAndAspects.View.StudentsAndTeachers"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FormationOfCriteriaOfSubcriteriaAndAspects.View"
+        mc:Ignorable="d"
+        Title="StudentsAndTeachers" Height="720" Width="1280">
+
+    <Border MinWidth="400" Margin="15,15,15,15" Background="#F0F0F0" VerticalAlignment="Top" Padding="30" MaxWidth="1200" CornerRadius="10" Height="650">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="30" Color="LightGray"  ShadowDepth="0">
+            </DropShadowEffect>
+        </Border.Effect>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="28"/>
+                <RowDefinition Height="540.8"/>
+
+                <RowDefinition Height="0"/>
+            </Grid.RowDefinitions>
+            <ComboBox x:Name="ComboBoxGroup" Grid.Row="1" Margin="109,10.2,856,500.4"/>
+            <ComboBox x:Name="ComboBoxStatusStudent" Grid.Row="1" Margin="327,10.2,638,500.4"/>
+            <TextBlock x:Name="Header" Grid.Row="0" Text="Информация о студентах и преподавателях" FontFamily="Microsoft Sans Serif" FontSize="20" HorizontalAlignment="Center" Margin="0,0,0,0" Width="418"/>
+            <DataGrid x:Name="DataGridStudents" AutoGenerateColumns="False" BorderThickness="0" IsReadOnly="True" Margin="0,56.2,526,10.4" Grid.Row="1">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Фамилия" Width="80" FontSize="12" Binding="{Binding FirstName}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Имя" Width="65" FontSize="12" Binding="{Binding LastName}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Отчество" Width="100" FontSize="12" Binding="{Binding Patronymic}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="E-mail" Width="165" FontSize="11" Binding="{Binding Email}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Телефон" Width="108" FontSize="12" Binding="{Binding Telephone}"></DataGridTextColumn>
+                    <DataGridTemplateColumn Width="30">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Name="RegactorStudentButton" ToolTip="Редактировать" BorderThickness="0">
+                                    <Image Source="link_edit-ver-6B5A0169229B7AE7CFA49101CA39F16D.png" Width="20"></Image>
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="30">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Name="RemoveStudentButton" Click="RemoveStudentButton_Click" ToolTip="Удалить студента" BorderThickness="0">
+                                    <Image Source="delete-ver-68461CA5187CD2C6AF08786467085F2B.png" Width="20"></Image>
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <DataGrid x:Name="DataGridTeacher" AutoGenerateColumns="False" BorderThickness="0" IsReadOnly="True" Margin="643,0,10,10.4" Grid.Row="1" SelectionChanged="DataGridTeacher_SelectionChanged" Height="475" VerticalAlignment="Bottom">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Фамилия" Width="80" FontSize="12" Binding="{Binding FirstName}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Имя" Width="65" FontSize="12" Binding="{Binding LastName}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Отчество" Width="100" FontSize="12" Binding="{Binding Patronymic}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="E-mail" Width="146" FontSize="11" Binding="{Binding Email}"></DataGridTextColumn>
+                    <DataGridTemplateColumn Width="30">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Name="RegactorTeacherButton" Click="RegactorTeacherButton_Click" ToolTip="Редактировать" BorderThickness="0">
+                                    <Image Source="link_edit-ver-6B5A0169229B7AE7CFA49101CA39F16D.png" Width="20"></Image>
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="30">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Name="RemoveTeacherButton" Click="RemoveTeacherButton_Click" ToolTip="Удалить студента" BorderThickness="0">
+                                    <Image Source="delete-ver-68461CA5187CD2C6AF08786467085F2B.png" Width="20"></Image>
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <ComboBox x:Name="ComboBoxStatusTeacher" Grid.Row="1" Margin="797,10.2,168,500.4"/>
+        </Grid>
+    </Border>
+</Window>

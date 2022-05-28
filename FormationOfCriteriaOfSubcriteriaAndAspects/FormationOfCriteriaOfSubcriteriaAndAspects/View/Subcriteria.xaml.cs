@@ -46,7 +46,7 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
 
         private void AddCriteriaBut_Click(object sender, RoutedEventArgs e)
         {
-            View.AddingSubcriteria add = new View.AddingSubcriteria();
+            View.AddingSubcriteria add = new View.AddingSubcriteria(criteria);
             if (add.ShowDialog() == true)
             {
                 LoadDataSubCriteria();

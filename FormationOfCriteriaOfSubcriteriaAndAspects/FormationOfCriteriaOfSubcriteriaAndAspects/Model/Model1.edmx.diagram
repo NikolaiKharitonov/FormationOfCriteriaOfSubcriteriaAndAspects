@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b8aa4f213d2641e384b36107c990463e" Name="Diagram1">
+      <Diagram DiagramId="ab3eef9ad3de417cae4f91be866fd469" Name="Diagram1">
         <EntityTypeShape EntityType="ProductionPracticeModel.Aspect" Width="1.5" PointX="9" PointY="10.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ProductionPracticeModel.Criteria" Width="1.5" PointX="4.5" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ProductionPracticeModel.DescriptionOfJudgeAspects" Width="1.5" PointX="11.25" PointY="10.875" IsExpanded="true" />
@@ -40,6 +40,7 @@
         <AssociationConnector Association="ProductionPracticeModel.FK_StatementStudent_Students" ManuallyRouted="false" />
         <AssociationConnector Association="ProductionPracticeModel.FK_Vedomosti_Student" ManuallyRouted="false" />
         <AssociationConnector Association="ProductionPracticeModel.FK_Teachers_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductionPracticeModel.FK_Criteria_ProModule" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
