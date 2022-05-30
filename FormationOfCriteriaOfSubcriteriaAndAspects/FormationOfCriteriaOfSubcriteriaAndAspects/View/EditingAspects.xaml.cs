@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -36,14 +37,9 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            if (TitleTextBox.Text == "") //Проверка на пустые поля                           
+            if (TitleTextBox.Text == "" || NumberOfPointsTextBox.Text == "") //Проверка на пустые поля                           
             {
-                if (NumberOfPointsTextBox.Text == "")
-                {
-                    MessageBox.Show("Должен быть указан Макс. балл");
-                    return;
-                }
-                MessageBox.Show("Должно быть указано имя для критерия");
+                MessageBox.Show("Должен быть указан название аспекта и макс. балл");
                 return;
             }
             var criteria = Controller.Connect.GetContext().Aspect;
@@ -51,9 +47,15 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
             {
                 if (TitleTextBox.Text == criter.Title) //Проверка на идентичность
                 {
-                    MessageBox.Show("Данный критерий уже существует");
+                    MessageBox.Show("Данный аспект уже существует");
                     return;
                 }
+            }
+            Regex ball = new Regex(@"^(?=.*[0-9])(?=.*[,])\S{4,5}$");  //Проверка на числой формат и цифры после запятой
+            if (ball.IsMatch(NumberOfPointsTextBox.Text) == false)
+            {
+                MessageBox.Show("Макс.балл должен быть от 0 до 99, содержать числовой формат и иметь две цифры после запятой");
+                return;
             }
             aspect.Title = TitleTextBox.Text;
             aspect.NumberOfPoints = Convert.ToDouble(NumberOfPointsTextBox.Text);

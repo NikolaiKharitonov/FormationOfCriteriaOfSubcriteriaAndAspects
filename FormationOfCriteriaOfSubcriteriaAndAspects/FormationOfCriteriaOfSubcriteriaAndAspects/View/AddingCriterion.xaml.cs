@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -42,12 +43,19 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
                     return;
                 }
             }
+            Regex ball = new Regex(@"^(?=.*[0-9])(?=.*[,])\S{5,5}$");  //Проверка на числой формат и цифры после запятой
+            if (ball.IsMatch(ValueTextBox.Text) == false)
+            {
+                MessageBox.Show("Макс. балл должен быть от 10 до 99, содержать числовой формат и иметь две цифры после запятой");
+                return;
+            }
             if (validComplete)
             {
                 var crit = new Model.Criteria()
                 {
                     Title = TitleTextBox.Text,
-                    MaxValue = Convert.ToDouble(ValueTextBox.Text)
+                    MaxValue = Convert.ToDouble(ValueTextBox.Text),
+                   
                 };
                 Controller.Connect.GetContext().Criteria.Add(crit);
                 Controller.Connect.GetContext().SaveChanges();
@@ -58,6 +66,11 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = false;
+        }
+
+        private void ValueTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
         }
     }
 }

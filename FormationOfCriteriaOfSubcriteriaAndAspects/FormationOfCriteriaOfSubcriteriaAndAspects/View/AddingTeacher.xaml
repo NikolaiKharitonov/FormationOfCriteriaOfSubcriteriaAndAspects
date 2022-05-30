@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FormationOfCriteriaOfSubcriteriaAndAspects.View"
         mc:Ignorable="d"
-        Title="AddingTeacher" Height="413" Width="463">
+        Title="AddingTeacher" Height="413" Width="463" MinWidth="463" MinHeight="413"  WindowStartupLocation="CenterScreen">
     <Border MinWidth="200" Margin="15,15,16.8,0" Background="White" VerticalAlignment="Top" Padding="30" MaxWidth="650" CornerRadius="10" Height="358">
         <Border.Effect>
             <DropShadowEffect BlurRadius="30" Color="LightGray"  ShadowDepth="0">

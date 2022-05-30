@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FormationOfCriteriaOfSubcriteriaAndAspects.View"
         mc:Ignorable="d"
-        Title="EditingAspects" Height="280" Width="700">
+        Title="EditingAspects" Height="280" Width="700" MinWidth="700" MinHeight="280"  WindowStartupLocation="CenterScreen">
     <Border MinWidth="200" Margin="15,15,15.4,0" Background="White" VerticalAlignment="Top" Padding="30" MaxWidth="650" CornerRadius="10" Height="217">
         <Border.Effect>
             <DropShadowEffect BlurRadius="30" Color="LightGray"  ShadowDepth="0">

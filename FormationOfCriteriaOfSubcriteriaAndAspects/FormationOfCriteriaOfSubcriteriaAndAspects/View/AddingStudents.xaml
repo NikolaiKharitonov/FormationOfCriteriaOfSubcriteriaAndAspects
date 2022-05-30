@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FormationOfCriteriaOfSubcriteriaAndAspects.View"
         mc:Ignorable="d"
-        Title="AddingStudents" Height="465" Width="463">
-    <Border MinWidth="200" Margin="15,15,16.8,0" Background="White" VerticalAlignment="Top" Padding="30" MaxWidth="650" CornerRadius="10" Height="408">
+        Title="AddingStudents" Height="513" Width="463" MinWidth="463" MinHeight="513"   WindowStartupLocation="CenterScreen">
+    <Border MinWidth="200" Margin="15,15,16.8,0" Background="White" VerticalAlignment="Top" Padding="30" MaxWidth="650" CornerRadius="10" Height="455">
         <Border.Effect>
             <DropShadowEffect BlurRadius="30" Color="LightGray"  ShadowDepth="0">
             </DropShadowEffect>
@@ -24,7 +24,7 @@
 
             </Grid.RowDefinitions>
             <TextBlock x:Name="Header" Text="Добавление" FontFamily="Microsoft Sans Serif" FontSize="18" HorizontalAlignment="Center" Margin="0,-2,0.8,2" Width="105"/>
-            <Rectangle x:Name="blok1" Fill="#a6caf0" Margin="0,19,-0.2,47.4" RadiusX="10" RadiusY="10" Grid.ColumnSpan="3" Grid.RowSpan="2"/>
+            <Rectangle x:Name="blok1" Fill="#a6caf0" Margin="0,19,-0.2,41" RadiusX="10" RadiusY="10" Grid.ColumnSpan="3" Grid.RowSpan="3"/>
 
             <StackPanel Grid.ColumnSpan="3" Margin="0,19,-0.2,2.4" VerticalAlignment="Center" Height="333" Grid.RowSpan="2">
                 <TextBox x:Name="FirstNameTextBox" FontSize="16" Margin="15,35,15,30" Height="23"/>
@@ -38,8 +38,13 @@
             <TextBlock x:Name="Header_Copy2" Text="Отчество:" FontFamily="Microsoft Sans Serif" FontSize="15" HorizontalAlignment="Left" Margin="20,123.8,0,194.4" Width="74" Height="17" Grid.Row="1"/>
             <TextBlock x:Name="Header_Copy3" Text="E-mail:" FontFamily="Microsoft Sans Serif" FontSize="15" HorizontalAlignment="Left" Margin="20,177.8,0,141.4" Width="54" Height="17" Grid.Row="1"/>
             <TextBlock x:Name="TelephoneStudent" Text="Телефон:" FontFamily="Microsoft Sans Serif" FontSize="15" HorizontalAlignment="Left" Margin="20,229.8,0,86.4" Width="72" Height="17" Grid.Row="1"/>
-            <Button x:Name="SaveStudentsButton" FontFamily="Microsoft Sans Serif" HorizontalAlignment="Center" Background="#a6caf0" Content="Сохранение" FontSize="15" Width="102" Click="AddStudents_Click" Margin="63,298.8,199.8,10.4" Grid.Row="1" Style="{StaticResource RoundButtonTemplate}"></Button>
-            <Button x:Name="cancellationStudentsButton" FontFamily="Microsoft Sans Serif" HorizontalAlignment="Center" Background="#a6caf0" Content="Отмена" FontSize="15" Width="112" Click="cancellationStudentsButton_Click" Margin="202,298.8,50.8,10.4" Grid.Row="1" Style="{StaticResource RoundButtonTemplate}"/>
+            <Button x:Name="SaveStudentsButton" FontFamily="Microsoft Sans Serif" HorizontalAlignment="Center" Background="#a6caf0" Content="Сохранение" FontSize="15" Width="102" Click="AddStudents_Click" Margin="62,5.6,200.8,10" Grid.Row="2" Style="{StaticResource RoundButtonTemplate}"></Button>
+            <Button x:Name="cancellationStudentsButton" FontFamily="Microsoft Sans Serif" HorizontalAlignment="Center" Background="#a6caf0" Content="Отмена" FontSize="15" Width="112" Click="cancellationStudentsButton_Click" Margin="201,5.6,51.8,10" Grid.Row="2" Style="{StaticResource RoundButtonTemplate}"/>
+            <ComboBox x:Name="GroupStudentComboBox" HorizontalAlignment="Left" Margin="20,302.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="326">
+                <ComboBoxItem Content="ПР-20.106"/>
+                <ComboBoxItem Content="ПР-20.107"/>
+            </ComboBox>
+            <TextBlock x:Name="TelephoneStudent_Copy" Text="Группа:" FontFamily="Microsoft Sans Serif" FontSize="15" HorizontalAlignment="Left" Margin="20,284.8,0,33.4" Width="72" Height="17" Grid.Row="1"/>
         </Grid>
     </Border>
 </Window>

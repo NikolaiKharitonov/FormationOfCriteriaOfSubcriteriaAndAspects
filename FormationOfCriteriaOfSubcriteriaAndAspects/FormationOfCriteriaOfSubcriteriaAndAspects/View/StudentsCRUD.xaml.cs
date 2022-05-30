@@ -23,11 +23,11 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
         {
             InitializeComponent();
 
-            var tests = Controller.Connect.GetContext().Group.ToList();
-            foreach (var test in tests)
-            {
-                ComboBoxGroup.Items.Add(test.Title);
-            }
+   //         var tests = Controller.Connect.GetContext().Group.ToList();
+   //         foreach (var test in tests)
+   //         {
+   //            ComboBoxGroup.Items.Add(test.Title);
+  //          }
             LoadDataStudent();
         }
 
@@ -57,15 +57,15 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
 
         private void ComboBoxGroup_SelectionChanged(object sender, SelectionChangedEventArgs e) //НЕ РАБОТАЕТ
         {
-            var group = Controller.Connect.GetContext().Group.ToList();
+ /*           var group = Controller.Connect.GetContext().Group.ToList();
             if (ComboBoxGroup.SelectedIndex > 0)
             {
                 var sort = ComboBoxGroup.SelectedItem as Model.Group;
                 if (sort != null)
                     group = group.Where(x => x.IdGroup == sort.IdGroup).ToList();
             }
-            DataGridStudents.ItemsSource = group;
-        }
+           DataGridStudents.ItemsSource = group;
+ */        }
 
         private void ComboBoxStatusStudent_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

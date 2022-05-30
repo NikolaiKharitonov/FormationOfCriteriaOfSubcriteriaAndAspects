@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FormationOfCriteriaOfSubcriteriaAndAspects.View"
         mc:Ignorable="d"
-        Title="AddingSubcriteria" Height="230" Width="700">
+        Title="AddingSubcriteria" Height="230" Width="700" MinWidth="700" MinHeight="230"   WindowStartupLocation="CenterScreen">
     <Border MinWidth="200" Margin="15,15,15.6,0" Background="White" VerticalAlignment="Top" Padding="30" MaxWidth="650" CornerRadius="10" Height="166">
         <Border.Effect>
             <DropShadowEffect BlurRadius="30" Color="LightGray"  ShadowDepth="0">

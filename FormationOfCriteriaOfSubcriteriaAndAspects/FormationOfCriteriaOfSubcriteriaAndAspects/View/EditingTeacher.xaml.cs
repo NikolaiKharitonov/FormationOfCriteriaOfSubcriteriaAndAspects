@@ -38,6 +38,11 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
 
         private void SaveTeachersButton_Click(object sender, RoutedEventArgs e)
         {
+            if (FirstNameTextBox.Text == "" || LastNameTextBox.Text == "" || PatronymicTextBox.Text == "") //Проверка на пустые поля                           
+            {
+                MessageBox.Show("Укажите ФИО");
+                return;
+            }
             criteria.FirstName = FirstNameTextBox.Text;
             criteria.LastName = LastNameTextBox.Text;
             criteria.Patronymic = PatronymicTextBox.Text;
