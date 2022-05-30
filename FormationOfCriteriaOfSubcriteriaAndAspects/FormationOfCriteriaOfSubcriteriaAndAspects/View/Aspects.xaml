@@ -14,7 +14,8 @@
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
-            <TextBlock x:Name="Header" Grid.Row="0" Text="Формирование аспектов" FontFamily="Microsoft Sans Serif" FontSize="20" HorizontalAlignment="Center" Margin="220,0,220.4,2.8" Width="250"/>
+            <TextBlock x:Name="Header" Grid.Row="0" Text="Формирование аспектов" FontFamily="Microsoft Sans Serif" FontSize="20" HorizontalAlignment="Center" Margin="205,-28,205.4,28" Width="250"/>
+            <TextBlock x:Name="SubtitleLabel" FontFamily="Microsoft Sans Serif"  FontSize="15" HorizontalAlignment="Center" Margin="10,5,10.4,5" Width="670" TextAlignment="Center"/>
             <DataGrid x:Name="DataGridAspects" BorderThickness="0" Margin="0,11.2,0.4,0.2" AutoGenerateColumns="False" Grid.Row="1" IsReadOnly="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Название аспектов" Width="290" FontSize="15" Binding="{Binding Title}"></DataGridTextColumn>
@@ -40,9 +41,7 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="144" Grid.Row="2" Margin="486,0.4,60.4,0">
-                <Button x:Name="AddCriteriaBut" Content="Добавление" Background="#a6caf0" FontSize="15" Width="130" Height="30" Click="AddCriteriaBut_Click" Margin="0,10,0,10.4"/>
-            </StackPanel>
+            <Button x:Name="AddCriteriaBut" Content="Добавление" Background="#a6caf0" FontSize="15" Height="30" Click="AddCriteriaBut_Click" Margin="594,-31,0.4,29" Width="96" Style="{StaticResource RoundButtonTemplate}"/>
         </Grid>
     </Border>
 </Window>

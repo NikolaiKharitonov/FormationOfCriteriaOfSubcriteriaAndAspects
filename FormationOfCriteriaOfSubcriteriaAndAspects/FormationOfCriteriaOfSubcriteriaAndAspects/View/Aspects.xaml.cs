@@ -20,12 +20,14 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
     public partial class Aspects : Window
     {
         public Model.SubCriteria criteria { get; set; }
-        public Aspects(Model.SubCriteria crid)
+        public Aspects(Model.SubCriteria crud)
         {
             InitializeComponent();
-            criteria = crid;
+            SubtitleLabel.Text = crud.Title;
+            criteria = crud;
+
             LoadDataAspect();
-            
+
         }
         public void LoadDataAspect()
         {
@@ -54,15 +56,19 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
         private void RemoveCriteria_Click(object sender, RoutedEventArgs e)
         {
             var delete = DataGridAspects.SelectedItem as Model.Aspect;
-            if (delete != null)
+            if (MessageBox.Show("Удалить?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
-                Controller.Connect.GetContext().Aspect.Remove(delete);
-                Controller.Connect.GetContext().SaveChanges();
-                LoadDataAspect();
-            }
-            else
-            {
-                MessageBox.Show("Вы не выбрали критерий");
+                try
+                {
+                    Controller.Connect.GetContext().Aspect.Remove(delete);
+                    Controller.Connect.GetContext().SaveChanges();
+                    LoadDataAspect();
+                    MessageBox.Show("Данные удалены");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
             }
         }
     }

@@ -20,10 +20,11 @@
       <PropertyRef Name="IdCriteria" />
     </Key>
     <Property Name="IdCriteria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Title" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
     <Property Name="IdProModule" Type="Int32" />
     <Property Name="MaxValue" Type="Double" />
     <NavigationProperty Name="SubCriteria" Relationship="Self.FK_SubCriteria_Criteria" FromRole="Criteria" ToRole="SubCriteria" />
+    <NavigationProperty Name="ProModule" Relationship="ProductionPracticeModel.FK_Criteria_ProModule" FromRole="Criteria" ToRole="ProModule" />
   </EntityType>
   <EntityType Name="DescriptionOfJudgeAspects">
     <Key>
@@ -67,6 +68,7 @@
     <Property Name="IdProModule" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Exam" Relationship="Self.FK_Exam_ProModule" FromRole="ProModule" ToRole="Exam" />
+    <NavigationProperty Name="Criteria" Relationship="ProductionPracticeModel.FK_Criteria_ProModule" FromRole="ProModule" ToRole="Criteria" />
   </EntityType>
   <EntityType Name="Role">
     <Key>
@@ -83,6 +85,7 @@
     <Property Name="IdSpeciality" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Student" Relationship="Self.FK_Students_Specialty" FromRole="Speciality" ToRole="Student" />
+    <NavigationProperty Name="Student1" Relationship="ProductionPracticeModel.FK_Student_Speciality" FromRole="Speciality" ToRole="Student" />
   </EntityType>
   <EntityType Name="StatusStudent">
     <Key>
@@ -118,6 +121,7 @@
     <NavigationProperty Name="StatusStudent" Relationship="Self.FK_Students_StudentStatus" FromRole="Student" ToRole="StatusStudent" />
     <NavigationProperty Name="StudentResult" Relationship="Self.FK_StatementStudent_Students" FromRole="Student" ToRole="StudentResult" />
     <NavigationProperty Name="Vedomosti" Relationship="Self.FK_Vedomosti_Student" FromRole="Student" ToRole="Vedomosti" />
+    <NavigationProperty Name="Speciality1" Relationship="ProductionPracticeModel.FK_Student_Speciality" FromRole="Student" ToRole="Speciality" />
   </EntityType>
   <EntityType Name="StudentResult">
     <Key>
@@ -488,5 +492,37 @@
       <End Role="SystemUser" EntitySet="SystemUser" />
       <End Role="Teachers" EntitySet="Teachers" />
     </AssociationSet>
+    <AssociationSet Name="FK_Criteria_ProModule" Association="ProductionPracticeModel.FK_Criteria_ProModule">
+      <End Role="ProModule" EntitySet="ProModule" />
+      <End Role="Criteria" EntitySet="Criteria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Speciality" Association="ProductionPracticeModel.FK_Student_Speciality">
+      <End Role="Speciality" EntitySet="Speciality" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
   </EntityContainer>
+  <Association Name="FK_Criteria_ProModule">
+    <End Type="ProductionPracticeModel.ProModule" Role="ProModule" Multiplicity="0..1" />
+    <End Type="ProductionPracticeModel.Criteria" Role="Criteria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProModule">
+        <PropertyRef Name="IdProModule" />
+      </Principal>
+      <Dependent Role="Criteria">
+        <PropertyRef Name="IdProModule" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Speciality">
+    <End Type="ProductionPracticeModel.Speciality" Role="Speciality" Multiplicity="0..1" />
+    <End Type="ProductionPracticeModel.Student" Role="Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Speciality">
+        <PropertyRef Name="IdSpeciality" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="IdSpeciality" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

@@ -27,14 +27,9 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             bool validComplete = true;
-            if (TitleTextBox.Text == "") //Проверка на пустые поля                           
+            if (TitleTextBox.Text == "" || ValueTextBox.Text =="") //Проверка на пустые поля                           
             {
-                if (ValueTextBox.Text == "")
-                {
-                    MessageBox.Show("Должно быть указано имя для критерия");
-                    return;
-                }
-                MessageBox.Show("Должен быть указан Макс. балл");
+                MessageBox.Show("Должен быть указан название критерия и макс. балл");
                 return;
             }
             var criteria = Controller.Connect.GetContext().Criteria;

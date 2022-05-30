@@ -41,6 +41,7 @@
         <AssociationConnector Association="ProductionPracticeModel.FK_Vedomosti_Student" ManuallyRouted="false" />
         <AssociationConnector Association="ProductionPracticeModel.FK_Teachers_Users" ManuallyRouted="false" />
         <AssociationConnector Association="ProductionPracticeModel.FK_Criteria_ProModule" />
+        <AssociationConnector Association="ProductionPracticeModel.FK_Student_Speciality" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

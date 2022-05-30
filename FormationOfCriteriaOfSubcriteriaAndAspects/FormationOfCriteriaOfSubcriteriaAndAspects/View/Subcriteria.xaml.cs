@@ -19,11 +19,14 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
     /// </summary>
     public partial class Subcriteria : Window
     {
+
         public Model.Criteria criteria { get; set; }
+
         public Subcriteria(Model.Criteria crud)
         {
             InitializeComponent();
             criteria = crud;
+            SubtitleLabel.Text = crud.Title;
             LoadDataSubCriteria();
         }
 
@@ -39,9 +42,9 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
             View.Aspects add = new View.Aspects(DataGridSubCriteria.SelectedItem as Model.SubCriteria);
             if (add.ShowDialog() == true)
             {
+                this.Close();
                 LoadDataSubCriteria();
             }
-
         }
 
         private void AddCriteriaBut_Click(object sender, RoutedEventArgs e)
@@ -65,18 +68,29 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
         {
             var selectedSap = DataGridSubCriteria.SelectedItem as Model.SubCriteria;
             var aspects = Controller.Connect.GetContext().Aspect.Where(x => x.IdSubCriteria == selectedSap.IdSubCriteria).ToList();
-            try
+            if (MessageBox.Show("Удалить?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
-                Controller.Connect.GetContext().Aspect.RemoveRange(aspects);
-                Controller.Connect.GetContext().SubCriteria.Remove(selectedSap);
-                Controller.Connect.GetContext().SaveChanges();
-                LoadDataSubCriteria();
-            }
-            catch (Exception ex)
+                try
+                {
+                    Controller.Connect.GetContext().Aspect.RemoveRange(aspects);
+                    Controller.Connect.GetContext().SubCriteria.Remove(selectedSap);
+                    Controller.Connect.GetContext().SaveChanges();
+                    LoadDataSubCriteria();
+                    MessageBox.Show("Данные удалены");
+                }
+                catch (Exception ex)
 
-            {
-                MessageBox.Show(ex.ToString());
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
             }
+        }
+
+        private void Nazad_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow add = new MainWindow();
+            add.Show();
+            this.Close();
         }
     }
 }

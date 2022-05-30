@@ -8,14 +8,19 @@
         Title="Subcriteria" Height="450" Width="800">
     <Border MinWidth="400" Margin="15,15,15,15" Background="#F0F0F0" VerticalAlignment="Top" Padding="30" MaxWidth="750" CornerRadius="10" Height="440">
         <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="308*"/>
+                <ColumnDefinition Width="37*"/>
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="28"/>
                 <RowDefinition Height="282"/>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
-            <TextBlock x:Name="Header" Grid.Row="0" Text="Формирование Подкритерия" FontFamily="Microsoft Sans Serif" FontSize="20" HorizontalAlignment="Center" Margin="0,0,0,0" Width="280"/>
-            <DataGrid x:Name="DataGridSubCriteria" AutoGenerateColumns="False" BorderThickness="0" Margin="0,11.2,0.4,0.2" Grid.Row="1" IsReadOnly="True">
+            <TextBlock x:Name="Header" Grid.Row="0" Text="Формирование Подкритерия" FontFamily="Microsoft Sans Serif" FontSize="20" HorizontalAlignment="Center" Margin="205,-28,131,28" Width="280"/>
+            <TextBlock x:Name="SubtitleLabel" FontFamily="Microsoft Sans Serif"  FontSize="15" HorizontalAlignment="Center" Margin="178,5,113,5" Width="325" TextAlignment="Center"/>
+            <DataGrid x:Name="DataGridSubCriteria" AutoGenerateColumns="False" BorderThickness="0" Margin="0,11,0.4,0.6" Grid.Row="1" IsReadOnly="True" Grid.ColumnSpan="2">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Название Субкритерия" FontSize="15" Width="475" Binding="{Binding Title}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Общие баллы" FontSize="15" Width="86" Binding="{Binding TotalScoresForAllAspects}"></DataGridTextColumn>
@@ -48,9 +53,9 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="139" Grid.Row="2" Margin="510,0.4,41.4,0">
-                <Button x:Name="AddCriteriaBut" Content="Добавление" Background="#a6caf0" FontSize="15" Width="130" Height="30" Click="AddCriteriaBut_Click"></Button>
-            </StackPanel>
+
+            <Button x:Name="AddCriteriaBut" Content="Добавление" Background="#a6caf0" FontSize="15" Click="AddCriteriaBut_Click" Margin="594,-28,0.4,28" Grid.ColumnSpan="2" Width="96" Style="{StaticResource RoundButtonTemplate}"/>
+            <Button x:Name="Nazad" HorizontalAlignment="Left" Background="#a6caf0" Content="Назад" FontSize="15" Click="Nazad_Click" Margin="0,-31,0,28" Height="31" VerticalAlignment="Bottom" Style="{StaticResource RoundButtonTemplate}" Width="66"/>
         </Grid>
     </Border>
 </Window>

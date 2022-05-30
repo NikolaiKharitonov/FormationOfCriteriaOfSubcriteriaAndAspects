@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 E:\Visual2019practix\FormationOfCriteriaOfSubcriteriaAndAspects\FormationOfCriteriaOfSubcriteriaAndAspects\App.xaml
-10-1924824836
+15-765148684
 2-1556844510
-36-1370376002
+4125057327
 191588249265
-MainWindow.xaml;View\AddingAspects.xaml;View\AddingCriterion.xaml;View\AddingSubcriteria.xaml;View\Aspects.xaml;View\EditingAspects.xaml;View\EditingCriterion.xaml;View\EditingSubcriteria.xaml;View\StudentsAndTeachers.xaml;View\Subcriteria.xaml;
+MainWindow.xaml;View\AddingAspects.xaml;View\AddingCriterion.xaml;View\AddingStudents.xaml;View\AddingSubcriteria.xaml;View\AddingTeacher.xaml;View\Aspects.xaml;View\EditingAspects.xaml;View\EditingCriterion.xaml;View\EditingStudents.xaml;View\EditingSubcriteria.xaml;View\EditingTeacher.xaml;View\StudentsCRUD.xaml;View\Subcriteria.xaml;View\TeachersCRUD.xaml;
 
 False
 

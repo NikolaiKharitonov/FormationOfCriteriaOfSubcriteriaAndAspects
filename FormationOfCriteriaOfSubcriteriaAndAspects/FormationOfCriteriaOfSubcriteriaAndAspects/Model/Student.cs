@@ -38,5 +38,6 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.Model
         public virtual ICollection<StudentResult> StudentResult { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Vedomosti> Vedomosti { get; set; }
+        public virtual Speciality Speciality1 { get; set; }
     }
 }

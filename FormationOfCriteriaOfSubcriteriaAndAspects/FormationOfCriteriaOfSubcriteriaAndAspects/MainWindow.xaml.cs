@@ -27,36 +27,36 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects
         }
         public void LoadData()
         {
-            var criteriaList = Controller.Connect.GetContext().Criteria.ToList();
+            var criteriaList = Controller.Connect.GetContext().Criteria.ToList(); //Загрузка Данных
             DataGridCriteria.ItemsSource = criteriaList;
-
         }
 
-            private void AddCriteriaBut_Click(object sender, RoutedEventArgs e)
+        private void AddCriteriaBut_Click(object sender, RoutedEventArgs e) //переход на окно добавление
+        {
+            View.AddingCriterion add = new View.AddingCriterion();
+            if (add.ShowDialog() == true)
             {
-                View.AddingCriterion add = new View.AddingCriterion();
-                if (add.ShowDialog() == true)
-                {
-                    LoadData();
-                }
+                LoadData();
             }
+        }
 
-            private void EditCriteria_Click(object sender, RoutedEventArgs e)
+        private void EditCriteria_Click(object sender, RoutedEventArgs e) //переход на окно редактирования
+        {
+            View.EditingCriterion add = new View.EditingCriterion(DataGridCriteria.SelectedItem as Model.Criteria);
+            if (add.ShowDialog() == true)
             {
-                View.EditingCriterion add = new View.EditingCriterion(DataGridCriteria.SelectedItem as Model.Criteria);
-                if (add.ShowDialog() == true)
-                {
-                    LoadData();
-                }
+                LoadData();
             }
+        }
 
-            private void RemoveCriteria_Click(object sender, RoutedEventArgs e)
+        private void RemoveCriteria_Click(object sender, RoutedEventArgs e) //удаление
+        {
+            var selectedCriteria = DataGridCriteria.SelectedItem as Model.Criteria;
+            var subCretirias = Controller.Connect.GetContext().SubCriteria.Where(x => x.IdCriteria == selectedCriteria.IdCriteria);
+            foreach (var subCretiria in subCretirias)
             {
-                var selectedCriteria = DataGridCriteria.SelectedItem as Model.Criteria;
-                var subCretirias = Controller.Connect.GetContext().SubCriteria.Where(x => x.IdCriteria == selectedCriteria.IdCriteria);
-                foreach (var subCretiria in subCretirias)
+                var aspects = Controller.Connect.GetContext().Aspect.Where(x => x.IdSubCriteria == subCretiria.IdSubCriteria);
                 {
-                    var aspects = Controller.Connect.GetContext().Aspect.Where(x => x.IdSubCriteria == subCretiria.IdSubCriteria);
                     try
                     {
                         Controller.Connect.GetContext().Aspect.RemoveRange(aspects);
@@ -66,29 +66,38 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects
                         MessageBox.Show(ex.ToString());
                     }
                 }
+            }
+            if (MessageBox.Show("Удалить?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
                 Controller.Connect.GetContext().SubCriteria.RemoveRange(subCretirias);
                 Controller.Connect.GetContext().Criteria.Remove(selectedCriteria);
                 Controller.Connect.GetContext().SaveChanges();
                 LoadData();
-            }
-
-            private void SubCriteriaButton_Click(object sender, RoutedEventArgs e)
-            {
-                View.Subcriteria sub = new View.Subcriteria(DataGridCriteria.SelectedItem as Model.Criteria);
-                if (sub.ShowDialog() == true)
-                {
-                    LoadData();
-                }
-            }
-
-            private void Transition_Click(object sender, RoutedEventArgs e)
-            {
-                View.StudentsAndTeachers add = new View.StudentsAndTeachers();
-                if (add.ShowDialog() == true)
-                {
-                    LoadData();
-                }
+                MessageBox.Show("Данные удалены");
             }
         }
+
+        private void SubCriteriaButton_Click(object sender, RoutedEventArgs e) //переход на страницу субкритерия(подкритерия)
+        {
+            View.Subcriteria sub = new View.Subcriteria(DataGridCriteria.SelectedItem as Model.Criteria);
+            sub.Show();
+            this.Close();
+        }
+
+
+        private void TransitionStudent_Click(object sender, RoutedEventArgs e) //переход на окно студенты
+        {
+            View.StudentsCRUD add = new View.StudentsCRUD(); 
+            add.Show();
+            this.Close();
+        }
+
+        private void TransitionTeacher_Click(object sender, RoutedEventArgs e) //переход на окно преподаватели
+        {
+            View.TeachersCRUD add = new View.TeachersCRUD();
+            add.Show();
+            this.Close();
+        }
     }
+}
 

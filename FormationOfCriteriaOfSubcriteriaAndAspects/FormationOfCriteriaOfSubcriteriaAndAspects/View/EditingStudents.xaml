@@ -1,0 +1,45 @@
+﻿<Window x:Class="FormationOfCriteriaOfSubcriteriaAndAspects.View.EditingStudents"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FormationOfCriteriaOfSubcriteriaAndAspects.View"
+        mc:Ignorable="d"
+        Title="EditingStudents" Height="465" Width="463">
+    <Border MinWidth="200" Margin="15,15,16.8,0" Background="White" VerticalAlignment="Top" Padding="30" MaxWidth="650" CornerRadius="10" Height="408">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="30" Color="LightGray"  ShadowDepth="0">
+            </DropShadowEffect>
+        </Border.Effect>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="0*"/>
+                <ColumnDefinition Width="0*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="19.2"></RowDefinition>
+                <RowDefinition Height="335.2"></RowDefinition>
+                <RowDefinition Height="41.6"></RowDefinition>
+
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="Header" Text="Редактирование" FontFamily="Microsoft Sans Serif" FontSize="18" HorizontalAlignment="Center" Margin="0,-2,0,0" Width="142"/>
+            <Rectangle x:Name="blok1" Fill="#a6caf0" Margin="0,19,-0.2,47.4" RadiusX="10" RadiusY="10" Grid.ColumnSpan="3" Grid.RowSpan="2"/>
+
+            <StackPanel Grid.ColumnSpan="3" Margin="0,19,-0.2,2.4" VerticalAlignment="Center" Height="333" Grid.RowSpan="2">
+                <TextBox x:Name="FirstNameTextBox" FontSize="16" Margin="15,35,15,30" Height="23"/>
+                <TextBox x:Name="LastNameTextBox" FontSize="16" Margin="15,0,15,30" Height="23"/>
+                <TextBox x:Name="PatronymicTextBox" FontSize="16" Margin="15,0,15,30" Height="23"/>
+                <TextBox x:Name="EmailTextBox" FontSize="16" Margin="15,0,15,30" Height="23"/>
+                <TextBox x:Name="TelephoneTextBox" FontSize="16" Margin="15,0,15,30" Height="23"/>
+            </StackPanel>
+            <TextBlock x:Name="Header_Copy" Text="Фамилия:" FontFamily="Microsoft Sans Serif" FontSize="15" HorizontalAlignment="Left" Margin="20,15.8,0,302.4" Width="72" Height="17" Grid.Row="1"/>
+            <TextBlock x:Name="Header_Copy1" Text="Имя:" FontFamily="Microsoft Sans Serif" FontSize="15" HorizontalAlignment="Left" Margin="20,69.8,0,247.4" Width="38" Height="17" Grid.Row="1"/>
+            <TextBlock x:Name="Header_Copy2" Text="Отчество:" FontFamily="Microsoft Sans Serif" FontSize="15" HorizontalAlignment="Left" Margin="20,123.8,0,194.4" Width="74" Height="17" Grid.Row="1"/>
+            <TextBlock x:Name="Header_Copy3" Text="E-mail:" FontFamily="Microsoft Sans Serif" FontSize="15" HorizontalAlignment="Left" Margin="20,177.8,0,141.4" Width="54" Height="17" Grid.Row="1"/>
+            <TextBlock x:Name="TelephoneStudent" Text="Телефон:" FontFamily="Microsoft Sans Serif" FontSize="15" HorizontalAlignment="Left" Margin="20,229.8,0,86.4" Width="72" Height="17" Grid.Row="1"/>
+            <Button x:Name="SaveStudentsButton" FontFamily="Microsoft Sans Serif" HorizontalAlignment="Center" Background="#a6caf0" Content="Сохранение" FontSize="15" Width="102" Click="SaveStudentsButton_Click" Margin="63,298.8,199.8,10.4" Grid.Row="1" Style="{StaticResource RoundButtonTemplate}"></Button>
+            <Button x:Name="cancellationStudentsButton" FontFamily="Microsoft Sans Serif" HorizontalAlignment="Center" Background="#a6caf0" Content="Отмена" FontSize="15" Width="112" Click="cancellationStudentsButton_Click" Margin="202,298.8,50.8,10.4" Grid.Row="1" Style="{StaticResource RoundButtonTemplate}"/>
+        </Grid>
+    </Border>
+</Window>

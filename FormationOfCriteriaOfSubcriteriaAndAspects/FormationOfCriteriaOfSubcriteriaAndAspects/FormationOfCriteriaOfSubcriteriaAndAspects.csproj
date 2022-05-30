@@ -140,8 +140,14 @@
     <Compile Include="View\AddingCriterion.xaml.cs">
       <DependentUpon>AddingCriterion.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\AddingStudents.xaml.cs">
+      <DependentUpon>AddingStudents.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\AddingSubcriteria.xaml.cs">
       <DependentUpon>AddingSubcriteria.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddingTeacher.xaml.cs">
+      <DependentUpon>AddingTeacher.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Aspects.xaml.cs">
       <DependentUpon>Aspects.xaml</DependentUpon>
@@ -152,14 +158,23 @@
     <Compile Include="View\EditingCriterion.xaml.cs">
       <DependentUpon>EditingCriterion.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\EditingStudents.xaml.cs">
+      <DependentUpon>EditingStudents.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\EditingSubcriteria.xaml.cs">
       <DependentUpon>EditingSubcriteria.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\StudentsAndTeachers.xaml.cs">
-      <DependentUpon>StudentsAndTeachers.xaml</DependentUpon>
+    <Compile Include="View\EditingTeacher.xaml.cs">
+      <DependentUpon>EditingTeacher.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\StudentsCRUD.xaml.cs">
+      <DependentUpon>StudentsCRUD.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Subcriteria.xaml.cs">
       <DependentUpon>Subcriteria.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TeachersCRUD.xaml.cs">
+      <DependentUpon>TeachersCRUD.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -182,7 +197,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\AddingStudents.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\AddingSubcriteria.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AddingTeacher.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -198,15 +221,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\EditingStudents.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\EditingSubcriteria.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\StudentsAndTeachers.xaml">
+    <Page Include="View\EditingTeacher.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\StudentsCRUD.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Subcriteria.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TeachersCRUD.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

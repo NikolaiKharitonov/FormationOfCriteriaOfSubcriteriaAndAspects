@@ -5,7 +5,7 @@
       <PropertyRef Name="IdAspect" />
     </Key>
     <Property Name="IdAspect" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Title" Type="varchar" MaxLength="50" />
+    <Property Name="Title" Type="varchar(max)" />
     <Property Name="IdSubCriteria" Type="int" />
     <Property Name="NumberOfPoints" Type="float" />
     <Property Name="IdTypeAspect" Type="int" />
@@ -44,7 +44,7 @@
     <Key>
       <PropertyRef Name="IdGroup" />
     </Key>
-    <Property Name="IdGroup" Type="int" Nullable="false" />
+    <Property Name="IdGroup" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Title" Type="varchar" MaxLength="50" />
     <Property Name="CourseNumber" Type="tinyint" />
   </EntityType>
@@ -111,7 +111,7 @@
       <PropertyRef Name="IdSubCriteria" />
     </Key>
     <Property Name="IdSubCriteria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Title" Type="varchar" MaxLength="50" />
+    <Property Name="Title" Type="varchar(max)" />
     <Property Name="IdCriteria" Type="int" />
     <Property Name="TotalScoresForAllAspects" Type="float" />
   </EntityType>
@@ -184,6 +184,18 @@
       </Principal>
       <Dependent Role="Aspect">
         <PropertyRef Name="IdTypeAspect" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Criteria_ProModule">
+    <End Role="ProModule" Type="Self.ProModule" Multiplicity="0..1" />
+    <End Role="Criteria" Type="Self.Criteria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProModule">
+        <PropertyRef Name="IdProModule" />
+      </Principal>
+      <Dependent Role="Criteria">
+        <PropertyRef Name="IdProModule" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -271,7 +283,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Students_Specialty">
+  <Association Name="FK_Student_Speciality">
     <End Role="Speciality" Type="Self.Speciality" Multiplicity="0..1" />
     <End Role="Student" Type="Self.Student" Multiplicity="*" />
     <ReferentialConstraint>
@@ -279,7 +291,7 @@
         <PropertyRef Name="IdSpeciality" />
       </Principal>
       <Dependent Role="Student">
-        <PropertyRef Name="IdGroup" />
+        <PropertyRef Name="IdSpeciality" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -394,6 +406,10 @@
       <End Role="TypeAspect" EntitySet="TypeAspect" />
       <End Role="Aspect" EntitySet="Aspect" />
     </AssociationSet>
+    <AssociationSet Name="FK_Criteria_ProModule" Association="Self.FK_Criteria_ProModule">
+      <End Role="ProModule" EntitySet="ProModule" />
+      <End Role="Criteria" EntitySet="Criteria" />
+    </AssociationSet>
     <AssociationSet Name="FK_DescriptionOfJudgeAspects_Aspect" Association="Self.FK_DescriptionOfJudgeAspects_Aspect">
       <End Role="Aspect" EntitySet="Aspect" />
       <End Role="DescriptionOfJudgeAspects" EntitySet="DescriptionOfJudgeAspects" />
@@ -422,7 +438,7 @@
       <End Role="Group" EntitySet="Group" />
       <End Role="Student" EntitySet="Student" />
     </AssociationSet>
-    <AssociationSet Name="FK_Students_Specialty" Association="Self.FK_Students_Specialty">
+    <AssociationSet Name="FK_Student_Speciality" Association="Self.FK_Student_Speciality">
       <End Role="Speciality" EntitySet="Speciality" />
       <End Role="Student" EntitySet="Student" />
     </AssociationSet>
