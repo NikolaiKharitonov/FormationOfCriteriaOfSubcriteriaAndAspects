@@ -49,7 +49,7 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects
             }
         }
 
-        private void RemoveCriteria_Click(object sender, RoutedEventArgs e) //удаление
+        private void RemoveCriteria_Click(object sender, RoutedEventArgs e) //удаление критериев, субкритериев и аспектов
         {
             var selectedCriteria = DataGridCriteria.SelectedItem as Model.Criteria;
             var subCretirias = Controller.Connect.GetContext().SubCriteria.Where(x => x.IdCriteria == selectedCriteria.IdCriteria);
@@ -80,8 +80,10 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects
         private void SubCriteriaButton_Click(object sender, RoutedEventArgs e) //переход на страницу субкритерия(подкритерия)
         {
             View.Subcriteria sub = new View.Subcriteria(DataGridCriteria.SelectedItem as Model.Criteria);
-            sub.Show();
-            this.Close();
+            if (sub.ShowDialog() == true)
+            {
+                LoadData();
+            }
         }
 
 

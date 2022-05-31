@@ -40,9 +40,7 @@
             <TextBlock x:Name="TelephoneStudent" Text="Телефон:" FontFamily="Microsoft Sans Serif" FontSize="15" HorizontalAlignment="Left" Margin="20,229.8,0,86.4" Width="72" Height="17" Grid.Row="1"/>
             <Button x:Name="SaveStudentsButton" FontFamily="Microsoft Sans Serif" HorizontalAlignment="Center" Background="#a6caf0" Content="Сохранение" FontSize="15" Width="102" Click="AddStudents_Click" Margin="62,5.6,200.8,10" Grid.Row="2" Style="{StaticResource RoundButtonTemplate}"></Button>
             <Button x:Name="cancellationStudentsButton" FontFamily="Microsoft Sans Serif" HorizontalAlignment="Center" Background="#a6caf0" Content="Отмена" FontSize="15" Width="112" Click="cancellationStudentsButton_Click" Margin="201,5.6,51.8,10" Grid.Row="2" Style="{StaticResource RoundButtonTemplate}"/>
-            <ComboBox x:Name="GroupStudentComboBox" HorizontalAlignment="Left" Margin="20,302.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="326">
-                <ComboBoxItem Content="ПР-20.106"/>
-                <ComboBoxItem Content="ПР-20.107"/>
+            <ComboBox x:Name="GroupStudentComboBox" DisplayMemberPath="Title"  HorizontalAlignment="Left" Margin="20,302.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="144">
             </ComboBox>
             <TextBlock x:Name="TelephoneStudent_Copy" Text="Группа:" FontFamily="Microsoft Sans Serif" FontSize="15" HorizontalAlignment="Left" Margin="20,284.8,0,33.4" Width="72" Height="17" Grid.Row="1"/>
         </Grid>

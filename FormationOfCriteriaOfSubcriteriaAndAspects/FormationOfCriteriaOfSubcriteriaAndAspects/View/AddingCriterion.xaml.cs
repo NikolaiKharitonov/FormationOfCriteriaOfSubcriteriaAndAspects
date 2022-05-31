@@ -38,16 +38,25 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
             {
                 if (TitleTextBox.Text == criter.Title) //Проверка на идентичность
                 {
-                    MessageBox.Show("Данный критерий уже существует");
+                    MessageBox.Show("Такой критерий уже существует");
                     validComplete = false;
                     return;
                 }
             }
-            Regex ball = new Regex(@"^(?=.*[0-9])(?=.*[,])\S{5,5}$");  //Проверка на числой формат и цифры после запятой
+
+            if (TitleTextBox.Text.Length > 100)
+            {
+                MessageBox.Show("Критерий не может содержать больше 100 букв");
+                return;
+            }
+
+            Regex ball = new Regex(@"^(?=.*[0-9])\S{1,4}$");  //Проверка на числой формат и цифры после запятой
             if (ball.IsMatch(ValueTextBox.Text) == false)
             {
-                MessageBox.Show("Макс. балл должен быть от 10 до 99, содержать числовой формат и иметь две цифры после запятой");
-                return;
+                {
+                    MessageBox.Show("Макс. балл должен быть от 1 до 100 и содержать числовой формат");
+                    return;
+                }
             }
             if (validComplete)
             {

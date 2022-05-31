@@ -34,33 +34,49 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
                 MessageBox.Show("Должен быть указан название аспекта и макс. балл");
                 return;
             }
-            var criteria = Controller.Connect.GetContext().Aspect;
-            foreach (var criter in criteria)
+            var criteria = Controller.Connect.GetContext().Aspect.Where(x => x.IdSubCriteria == _subCriteria.IdSubCriteria && x.Title == TitleTextBox.Text).FirstOrDefault();
+            if (criteria != null)
             {
-                if (TitleTextBox.Text == criter.Title) //Проверка на идентичность
-                {
-                    MessageBox.Show("Данный аспект уже существует");
-                    return;
-                }
+                MessageBox.Show("Такой аспект уже существует");
+                return;
             }
-            Regex ball = new Regex(@"^(?=.*[0-9])(?=.*[,])\S{4,5}$");  //Проверка на числой формат и цифры после запятой
+            Regex ball = new Regex(@"^(?=.*[0-9])\S{1,4}$");  //Проверка на числой формат и цифры после запятой
             if (ball.IsMatch(NumberOfPointsTextBox.Text) == false)
             {
-                MessageBox.Show("Макс. балл должен быть от 0 до 99, содержать числовой формат и иметь две цифры после запятой");
+                MessageBox.Show("Макс. балл должен равняться субкритерию по баллам и содержать числовой формат");
                 return;
             }
 
-            var add = new Model.Aspect()
+            if (TitleTextBox.Text.Length > 100)
             {
-                Title = TitleTextBox.Text,
-                Description = DescriptionTextBox.Text,
-                NumberOfPoints = Convert.ToDouble(NumberOfPointsTextBox.Text),
-                IdSubCriteria = _subCriteria.IdSubCriteria
-            };
-            Controller.Connect.GetContext().Aspect.Add(add);
-            Controller.Connect.GetContext().SaveChanges();
-            MessageBox.Show("Данные сохранены");
-            this.DialogResult = true;
+                MessageBox.Show("Аспект не может содержать больше 100 букв");
+                return;
+            }
+
+            double maxValue = 0;
+            var subCriterias = Controller.Connect.GetContext().Aspect.Where(x => x.IdSubCriteria == _subCriteria.IdSubCriteria).ToList();  //проверка на количество баллов, чтобы не превышал субкритерий
+            foreach (var subCriteria in subCriterias)
+            {
+                maxValue += (double)subCriteria.NumberOfPoints;
+            }
+            if (maxValue + Convert.ToDouble(NumberOfPointsTextBox.Text) < _subCriteria.TotalScoresForAllAspects) 
+            {
+                var sub = new Model.Aspect()
+                {
+                    Title = TitleTextBox.Text,
+                    Description = DescriptionTextBox.Text,
+                    NumberOfPoints = Convert.ToDouble(NumberOfPointsTextBox.Text),
+                    IdSubCriteria = _subCriteria.IdSubCriteria
+                };
+
+                Controller.Connect.GetContext().Aspect.Add(sub);
+                Controller.Connect.GetContext().SaveChanges();
+                this.DialogResult = true;
+            }
+            else
+            {
+                MessageBox.Show("Вы привысили количество баллов над субкритерием");
+            }
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

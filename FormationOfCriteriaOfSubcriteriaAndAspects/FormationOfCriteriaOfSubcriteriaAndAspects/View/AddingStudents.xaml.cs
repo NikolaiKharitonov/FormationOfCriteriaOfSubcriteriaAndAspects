@@ -23,6 +23,7 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
         public AddingStudents()
         {
             InitializeComponent();
+            GroupStudentComboBox.ItemsSource = Controller.Connect.GetContext().Group.ToList();
         }
 
         private void AddStudents_Click(object sender, RoutedEventArgs e)
@@ -30,29 +31,38 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
             {
                 if (FirstNameTextBox.Text == "" || LastNameTextBox.Text == "" || PatronymicTextBox.Text == "") //Проверка на пустые поля                           
                 {
-                    MessageBox.Show("Укажите ФИО");
+                    MessageBox.Show("Укажите фамилию, имя и отчество");
                     return;
                 }
-                Regex LoginRegex = new Regex(@"^(([A-Z]+)||([a-z]+)(([0-9]*[a-z]*[A-Z]*)*[_,-]*)+){6,30}$");
-                if (LoginRegex.IsMatch(EmailTextBox.Text) == false)
+                if (FirstNameTextBox.Text.Length > 30 || LastNameTextBox.Text.Length > 30 || PatronymicTextBox.Text.Length > 30) //Проверка на количество вводимых значений до 30
                 {
-                    try
-                    {
-                        MessageBox.Show("должен содержать большую букву, хотя бы одну цифру,\nодин знак, иметь длину больше 6 символов");
-                    }
-
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message.ToString());
-                    }
+                    MessageBox.Show("Фамилия, имя и отчество не должны содержать больше 30 букв");
+                    return;
                 }
+                if (EmailTextBox.Text.Length > 30)
+                {
+                    MessageBox.Show("Email не должен содержать больше 30 букв");
+                    return;
+                }
+                if (TelephoneTextBox.Text.Length > 11)
+                {
+                    MessageBox.Show("Телефон должен содержать 11 цифр");
+                    return;
+                }
+                if (TelephoneTextBox.Text.Length < 11)
+                {
+                    MessageBox.Show("Телефон должен содержать 11 цифр");
+                    return;
+                }
+
                 var crit = new Model.Student()
                 {
                     FirstName = FirstNameTextBox.Text,
                     LastName = LastNameTextBox.Text,
                     Patronymic = PatronymicTextBox.Text,
                     Email = EmailTextBox.Text,
-                    Telephone = TelephoneTextBox.Text
+                    Telephone = TelephoneTextBox.Text,
+                    IdGroup = (GroupStudentComboBox.SelectedItem as Model.Group).IdGroup
                 };
                 Controller.Connect.GetContext().Student.Add(crit);
                 Controller.Connect.GetContext().SaveChanges();

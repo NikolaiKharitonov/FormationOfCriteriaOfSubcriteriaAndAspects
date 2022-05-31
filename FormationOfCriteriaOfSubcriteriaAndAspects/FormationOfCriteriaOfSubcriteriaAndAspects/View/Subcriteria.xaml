@@ -23,7 +23,7 @@
             <DataGrid x:Name="DataGridSubCriteria" AutoGenerateColumns="False" BorderThickness="0" Margin="0,11,0.4,0.6" Grid.Row="1" IsReadOnly="True" Grid.ColumnSpan="2">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Название Субкритерия" FontSize="15" Width="475" Binding="{Binding Title}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Общие баллы" FontSize="15" Width="86" Binding="{Binding TotalScoresForAllAspects}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Общие баллы" FontSize="15" Width="86" Binding="{Binding TotalScoresForAllAspects, StringFormat={}{0:N2}}"></DataGridTextColumn>
                     <DataGridTemplateColumn Width="35">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
@@ -55,7 +55,6 @@
             </DataGrid>
 
             <Button x:Name="AddCriteriaBut" Content="Добавление" Background="#a6caf0" FontSize="15" Click="AddCriteriaBut_Click" Margin="594,-28,0.4,28" Grid.ColumnSpan="2" Width="96" Style="{StaticResource RoundButtonTemplate}"/>
-            <Button x:Name="Nazad" HorizontalAlignment="Left" Background="#a6caf0" Content="Назад" FontSize="15" Click="Nazad_Click" Margin="0,-31,0,28" Height="31" VerticalAlignment="Bottom" Style="{StaticResource RoundButtonTemplate}" Width="66"/>
         </Grid>
     </Border>
 </Window>

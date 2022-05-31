@@ -20,22 +20,21 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
     /// </summary>
     public partial class EditingCriterion : Window
     {
-        public Model.Criteria criteria { get; set; }
+        public Model.Criteria _criteria { get; set; }
         public EditingCriterion(Model.Criteria crit)
         {
             InitializeComponent();
-            criteria = crit;
+            _criteria = crit;
             CriteriaBD();
         }
         public void CriteriaBD()
         {
-            var searchCritera = Controller.Connect.GetContext().Criteria.Where(x => x.IdCriteria == criteria.IdCriteria).FirstOrDefault();
+            var searchCritera = Controller.Connect.GetContext().Criteria.Where(x => x.IdCriteria == _criteria.IdCriteria).FirstOrDefault();
             TitleTextBox.Text = searchCritera.Title;
             ValueTextBox.Text = searchCritera.MaxValue.ToString();
         }
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            bool validComplete = true;
             if (TitleTextBox.Text == "" || ValueTextBox.Text == "") //Проверка на пустые поля                           
             {
                 MessageBox.Show("Должен быть указан название критерия и макс. балл");
@@ -47,26 +46,24 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
                 if (TitleTextBox.Text == criter.Title) //Проверка на идентичность
                 {
                     MessageBox.Show("Данный критерий уже существует");
-                    validComplete = false;
                     return;
                 }
             }
-            Regex ball = new Regex(@"^(?=.*[0-9])(?=.*[,])\S{5,5}$");  //Проверка на числой формат и цифры после запятой
+            Regex ball = new Regex(@"^(?=.*[0-9])\S{1,4}$");  //Проверка на числой формат и цифры после запятой
             if (ball.IsMatch(ValueTextBox.Text) == false)
             {
-                MessageBox.Show("Макс. балл должен быть от 10 до 99, содержать числовой формат и иметь две цифры после запятой");
+                MessageBox.Show("Макс. балл должен быть от 1 до 100 и содержать числовой формат");
                 return;
             }
-            if (validComplete)
+            if (TitleTextBox.Text.Length > 100)
             {
-                var crit = new Model.Criteria()
-                {
-                    Title = TitleTextBox.Text,
-                    MaxValue = Convert.ToDouble(ValueTextBox.Text)
-                };
-                Controller.Connect.GetContext().SaveChanges();
-                this.DialogResult = true;
+                MessageBox.Show("Критерий не может содержать больше 100 букв");
+                return;
             }
+            _criteria.Title = TitleTextBox.Text;
+            _criteria.MaxValue = Convert.ToDouble(ValueTextBox.Text);
+            Controller.Connect.GetContext().SaveChanges();
+            this.DialogResult = true;
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

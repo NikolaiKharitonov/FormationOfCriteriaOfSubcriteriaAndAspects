@@ -85,12 +85,5 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
                 }
             }
         }
-
-        private void Nazad_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow add = new MainWindow();
-            add.Show();
-            this.Close();
-        }
     }
 }

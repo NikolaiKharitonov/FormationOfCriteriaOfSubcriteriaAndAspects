@@ -20,16 +20,16 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
     /// </summary>
     public partial class EditingAspects : Window
     {
-        public Model.Aspect aspect { get; set; }
+        public Model.Aspect _aspect { get; set; }
         public EditingAspects(Model.Aspect AspectCrud)
         {
             InitializeComponent();
-            aspect = AspectCrud;
+            _aspect = AspectCrud;
             AspectCriteriaBD();
         }
         public void AspectCriteriaBD()
         {
-            var searchCritera = Controller.Connect.GetContext().Aspect.Where(x => x.IdAspect == aspect.IdAspect).FirstOrDefault();
+            var searchCritera = Controller.Connect.GetContext().Aspect.Where(x => x.IdAspect == _aspect.IdAspect).FirstOrDefault();
             TitleTextBox.Text = searchCritera.Title;
             NumberOfPointsTextBox.Text = searchCritera.NumberOfPoints.ToString();
             DescriptionTextBox.Text = searchCritera.Description;
@@ -42,26 +42,34 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
                 MessageBox.Show("Должен быть указан название аспекта и макс. балл");
                 return;
             }
-            var criteria = Controller.Connect.GetContext().Aspect;
-            foreach (var criter in criteria)
+            var criteria = Controller.Connect.GetContext().Aspect.Where(x => x.IdSubCriteria == _aspect.IdSubCriteria && x.Title == TitleTextBox.Text).FirstOrDefault();
+            if (criteria != null)
             {
-                if (TitleTextBox.Text == criter.Title) //Проверка на идентичность
-                {
-                    MessageBox.Show("Данный аспект уже существует");
-                    return;
-                }
-            }
-            Regex ball = new Regex(@"^(?=.*[0-9])(?=.*[,])\S{4,5}$");  //Проверка на числой формат и цифры после запятой
-            if (ball.IsMatch(NumberOfPointsTextBox.Text) == false)
-            {
-                MessageBox.Show("Макс.балл должен быть от 0 до 99, содержать числовой формат и иметь две цифры после запятой");
+                MessageBox.Show("Такой аспект уже существует");
                 return;
             }
-            aspect.Title = TitleTextBox.Text;
-            aspect.NumberOfPoints = Convert.ToDouble(NumberOfPointsTextBox.Text);
-            aspect.Description = DescriptionTextBox.Text;
-            Controller.Connect.GetContext().SaveChanges();
-            this.DialogResult = true;
+            Regex ball = new Regex(@"^(?=.*[0-9])\S{1,4}$");  //Проверка на числой формат и цифры после запятой
+            if (ball.IsMatch(NumberOfPointsTextBox.Text) == false)
+            {
+                MessageBox.Show("Макс. балл должен равняться субкритерию по баллам и содержать числовой формат");
+                return;
+            }
+            if (TitleTextBox.Text.Length > 100)
+            {
+                MessageBox.Show("Аспект не может содержать больше 100 букв");
+                return;
+            }
+            if (DescriptionTextBox.Text.Length > 100)
+            {
+                MessageBox.Show("Дополнительное описание не может содержать больше 100 букв");
+                return;
+            }
+
+            _aspect.Title = TitleTextBox.Text;
+                _aspect.NumberOfPoints = Convert.ToDouble(NumberOfPointsTextBox.Text);
+                _aspect.Description = DescriptionTextBox.Text;
+                Controller.Connect.GetContext().SaveChanges();
+                this.DialogResult = true;
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

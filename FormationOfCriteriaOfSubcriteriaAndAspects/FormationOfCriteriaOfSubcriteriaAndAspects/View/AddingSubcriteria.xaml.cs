@@ -34,36 +34,58 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
                 MessageBox.Show("Должен быть указан название подкритерия и макс. балл");
                 return;
             }
-            var criteria = Controller.Connect.GetContext().SubCriteria;
-            foreach (var criter in criteria)
+            var criteria = Controller.Connect.GetContext().SubCriteria.Where(x => x.IdCriteria == _criteria.IdCriteria && x.Title == TitleTextBox.Text).FirstOrDefault();
+            if(criteria != null)
             {
-                if (TitleTextBox.Text == criter.Title) //Проверка на идентичность
-                {
-                    MessageBox.Show("Данный критерий уже существует");
-                    return;
-                }
-            }
-            Regex ball = new Regex(@"^(?=.*[0-9])(?=.*[,])\S{4,5}$");  //Проверка на числой формат и цифры после запятой
-            if (ball.IsMatch(TotalScoresForAllAspectsTextBox.Text) == false)
-            {
-                MessageBox.Show("Макс. балл должен быть от 0 до 99, содержать числовой формат и иметь две цифры после запятой");
+                MessageBox.Show("Такой субкритерий уже существует");
                 return;
             }
-            var sub = new Model.SubCriteria()
+            Regex ball = new Regex(@"^(?=.*[0-9])\S{1,4}$");  //Проверка на числой формат и цифры после запятой
+            if (ball.IsMatch(TotalScoresForAllAspectsTextBox.Text) == false)
             {
-                Title = TitleTextBox.Text,
-                TotalScoresForAllAspects = Convert.ToDouble(TotalScoresForAllAspectsTextBox.Text),
-                IdCriteria = _criteria.IdCriteria
-            };
-            Controller.Connect.GetContext().SubCriteria.Add(sub);
-            Controller.Connect.GetContext().SaveChanges();
-            MessageBox.Show("Субкритерий добавлен");
-            this.DialogResult = true;
+                MessageBox.Show("Макс. балл должен равняться критерию по баллам и содержать числовой формат");
+                return;
+            }
+
+            if (TitleTextBox.Text.Length > 100)
+            {
+                MessageBox.Show("Субкритерий не может содержать больше 100 букв");
+                return;
+            }
+
+            double maxValue = 0;
+            var subCriterias = Controller.Connect.GetContext().SubCriteria.Where(x => x.IdCriteria == _criteria.IdCriteria).ToList();  //проверка на количество баллов, чтобы не превышали критерий
+            foreach (var subCriteria in subCriterias)
+            {
+                maxValue += (double)subCriteria.TotalScoresForAllAspects;
+            }
+            if(maxValue + Convert.ToDouble(TotalScoresForAllAspectsTextBox.Text) < _criteria.MaxValue) 
+            {
+                var sub = new Model.SubCriteria()
+                {
+                    Title = TitleTextBox.Text,
+                    TotalScoresForAllAspects = Convert.ToDouble(TotalScoresForAllAspectsTextBox.Text),
+                    IdCriteria = _criteria.IdCriteria
+                };
+
+                Controller.Connect.GetContext().SubCriteria.Add(sub);
+                Controller.Connect.GetContext().SaveChanges();
+                this.DialogResult = true;
+            }
+            else
+            {
+                MessageBox.Show("Вы привысили количество баллов над критерием");
+            }
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = false;
+        }
+
+        private void TotalScoresForAllAspectsTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

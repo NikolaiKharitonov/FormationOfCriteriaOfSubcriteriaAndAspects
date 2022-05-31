@@ -41,21 +41,24 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
                 MessageBox.Show("Должен быть указан название подкритерия и макс. балл");
                 return;
             }
-            var criteria = Controller.Connect.GetContext().SubCriteria;
-            foreach (var criter in criteria)
+            var criteria = Controller.Connect.GetContext().SubCriteria.Where(x => x.IdCriteria == subcriteria.IdCriteria && x.Title == TitleTextBox.Text).FirstOrDefault();
+            if (criteria != null)
             {
-                if (TitleTextBox.Text == criter.Title) //Проверка на идентичность
-                {
-                    MessageBox.Show("Данный критерий уже существует");
-                    return;
-                }
-            }
-            Regex ball = new Regex(@"^(?=.*[0-9])(?=.*[,])\S{4,5}$");  //Проверка на числой формат и цифры после запятой
-            if (ball.IsMatch(TotalScoresForAllAspectsTextBox.Text) == false)
-            {
-                MessageBox.Show("Макс. балл должен быть от 0 до 99, содержать числовой формат и иметь две цифры после запятой");
+                MessageBox.Show("Такой субкритерий уже существует");
                 return;
             }
+            Regex ball = new Regex(@"^(?=.*[0-9])\S{1,4}$");  //Проверка на числой формат и цифры после запятой
+            if (ball.IsMatch(TotalScoresForAllAspectsTextBox.Text) == false)
+            {
+                MessageBox.Show("Макс. балл должен равняться критерию по баллам и содержать числовой формат");
+                return;
+            }
+            if (TitleTextBox.Text.Length > 100)
+            {
+                MessageBox.Show("Субкритерий не может содержать больше 100 букв");
+                return;
+            }
+
             subcriteria.Title = TitleTextBox.Text;
             subcriteria.TotalScoresForAllAspects = Convert.ToDouble(TotalScoresForAllAspectsTextBox.Text);
             Controller.Connect.GetContext().SaveChanges();

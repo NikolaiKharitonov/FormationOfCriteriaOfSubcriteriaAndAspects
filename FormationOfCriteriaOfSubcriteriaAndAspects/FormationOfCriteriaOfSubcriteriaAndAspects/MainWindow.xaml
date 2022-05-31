@@ -22,7 +22,7 @@
             <DataGrid x:Name="DataGridCriteria" AutoGenerateColumns="False" BorderThickness="0" IsReadOnly="True" Margin="0,11.2,0.4,0.2" Grid.Row="1">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Название критерия" Width="420" FontSize="15" Binding="{Binding Title}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Максимальный балл" Width="158" FontSize="15" Binding="{Binding MaxValue}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Максимальный балл" Width="158" FontSize="15" Binding="{Binding MaxValue, StringFormat={}{0:N2}}"></DataGridTextColumn>
                     <DataGridTemplateColumn Width="35">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
