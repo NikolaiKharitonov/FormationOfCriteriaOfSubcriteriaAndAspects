@@ -59,7 +59,7 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
             {
                 maxValue += (double)subCriteria.TotalScoresForAllAspects;
             }
-            if(maxValue + Convert.ToDouble(TotalScoresForAllAspectsTextBox.Text) < _criteria.MaxValue) 
+            if(maxValue + Convert.ToDouble(TotalScoresForAllAspectsTextBox.Text) <= _criteria.MaxValue) 
             {
                 var sub = new Model.SubCriteria()
                 {

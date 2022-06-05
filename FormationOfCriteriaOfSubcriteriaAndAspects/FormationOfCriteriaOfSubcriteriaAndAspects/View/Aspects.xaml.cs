@@ -71,5 +71,10 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
                 }
             }
         }
+
+        private void AspectSudiuBtn_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
     }
 }

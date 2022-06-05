@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -54,6 +55,13 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
                 MessageBox.Show("Email не должен содержать больше 30 букв");
                 return;
             }
+            Regex ball = new Regex(@"\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([com]\w+)*");  //Проверка email
+            if (ball.IsMatch(EmailTextBox.Text) == false)
+            {
+                MessageBox.Show("Нужен Email адрес");
+                return;
+            }
+
             criteria.FirstName = FirstNameTextBox.Text;
             criteria.LastName = LastNameTextBox.Text;
             criteria.Patronymic = PatronymicTextBox.Text;

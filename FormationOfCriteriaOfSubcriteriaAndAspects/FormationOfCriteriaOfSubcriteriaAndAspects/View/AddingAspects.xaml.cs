@@ -59,7 +59,7 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
             {
                 maxValue += (double)subCriteria.NumberOfPoints;
             }
-            if (maxValue + Convert.ToDouble(NumberOfPointsTextBox.Text) < _subCriteria.TotalScoresForAllAspects) 
+            if (maxValue + Convert.ToDouble(NumberOfPointsTextBox.Text) <= _subCriteria.TotalScoresForAllAspects) 
             {
                 var sub = new Model.Aspect()
                 {
@@ -103,6 +103,11 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
             blok2.Visibility = Visibility.Hidden;
             DescriptionTextBox.Visibility = Visibility.Hidden;
             RemoveDescriptionlButton.Visibility = Visibility.Hidden;
+        }
+
+        private void JudicialAspectsButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

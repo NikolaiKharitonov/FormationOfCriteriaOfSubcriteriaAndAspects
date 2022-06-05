@@ -9,7 +9,7 @@
     <Property Name="IdSubCriteria" Type="int" />
     <Property Name="NumberOfPoints" Type="float" />
     <Property Name="IdTypeAspect" Type="int" />
-    <Property Name="Description" Type="varchar" MaxLength="100" />
+    <Property Name="Description" Type="varchar(max)" />
   </EntityType>
   <EntityType Name="Criteria">
     <Key>
@@ -26,8 +26,8 @@
     </Key>
     <Property Name="IdDescriptionOfJudgeAspects" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IdAspect" Type="int" />
-    <Property Name="Judg" Type="varchar" MaxLength="50" />
-    <Property Name="Description" Type="varchar" MaxLength="100" />
+    <Property Name="Judg" Type="varchar" MaxLength="300" />
+    <Property Name="Description" Type="varchar" MaxLength="300" />
   </EntityType>
   <EntityType Name="Exam">
     <Key>
@@ -150,7 +150,7 @@
       <PropertyRef Name="IdTypeAspect" />
     </Key>
     <Property Name="IdTypeAspect" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Title" Type="varchar" MaxLength="50" />
+    <Property Name="Title" Type="varchar(max)" />
   </EntityType>
   <EntityType Name="Vedomosti">
     <Key>

@@ -1,0 +1,2 @@
+E:\Visual2019practix\FormationOfCriteriaOfSubcriteriaAndAspects\UnitTestProject\obj\Debug\UnitTestProject.csproj.AssemblyReference.cache
+E:\Visual2019practix\FormationOfCriteriaOfSubcriteriaAndAspects\UnitTestProject\obj\Debug\UnitTestProject.csproj.CoreCompileInputs.cache

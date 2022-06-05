@@ -27,10 +27,10 @@
             <Rectangle x:Name="blok1" Fill="#a6caf0" Margin="0,19,-0.2,87.4" RadiusX="10" RadiusY="10" Grid.ColumnSpan="3" Grid.RowSpan="2"/>
 
             <StackPanel Grid.ColumnSpan="3" Margin="0,19,-0.2,45.4" VerticalAlignment="Center" Height="290" Grid.RowSpan="2">
-                <TextBox x:Name="FirstNameTextBox" FontSize="16" Margin="15,35,15,30" Height="23"/>
-                <TextBox x:Name="LastNameTextBox" FontSize="16" Margin="15,0,15,30" Height="23"/>
-                <TextBox x:Name="PatronymicTextBox" FontSize="16" Margin="15,0,15,30" Height="23"/>
-                <TextBox x:Name="EmailTextBox" FontSize="16" Margin="15,0,15,30" Height="23"/>
+                <TextBox x:Name="FirstNameTextBox" FontFamily="Microsoft Sans Serif" FontSize="16" Margin="15,35,15,30" Height="23"/>
+                <TextBox x:Name="LastNameTextBox" FontFamily="Microsoft Sans Serif" FontSize="16" Margin="15,0,15,30" Height="23"/>
+                <TextBox x:Name="PatronymicTextBox" FontFamily="Microsoft Sans Serif" FontSize="16" Margin="15,0,15,30" Height="23"/>
+                <TextBox x:Name="EmailTextBox" FontFamily="Microsoft Sans Serif" FontSize="16" Margin="15,0,15,30" Height="23"/>
             </StackPanel>
             <TextBlock x:Name="Header_Copy" Text="Фамилия:" FontFamily="Microsoft Sans Serif" FontSize="15" HorizontalAlignment="Left" Margin="20,15.8,0,302.4" Width="72" Height="17" Grid.Row="1"/>
             <TextBlock x:Name="Header_Copy1" Text="Имя:" FontFamily="Microsoft Sans Serif" FontSize="15" HorizontalAlignment="Left" Margin="20,69.8,0,247.4" Width="38" Height="17" Grid.Row="1"/>

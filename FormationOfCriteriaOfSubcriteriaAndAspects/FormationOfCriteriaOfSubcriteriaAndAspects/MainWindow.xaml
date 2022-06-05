@@ -19,7 +19,7 @@
                 <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
             <TextBlock x:Name="Header" Grid.Row="0" Text="Формирование критериев" FontFamily="Microsoft Sans Serif" FontSize="20" HorizontalAlignment="Center" Margin="220,0,220.4,2.8" Width="250"/>
-            <DataGrid x:Name="DataGridCriteria" AutoGenerateColumns="False" BorderThickness="0" IsReadOnly="True" Margin="0,11.2,0.4,0.2" Grid.Row="1">
+            <DataGrid x:Name="DataGridCriteria" FontFamily="Microsoft Sans Serif" AutoGenerateColumns="False" BorderThickness="0" IsReadOnly="True" Margin="0,11.2,0.4,0.2" Grid.Row="1">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Название критерия" Width="420" FontSize="15" Binding="{Binding Title}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Максимальный балл" Width="158" FontSize="15" Binding="{Binding MaxValue, StringFormat={}{0:N2}}"></DataGridTextColumn>
@@ -53,9 +53,9 @@
                 </DataGrid.Columns>
             </DataGrid>
 
-            <Button x:Name="AddCriteriaBut" HorizontalAlignment="Center" Background="#a6caf0" Content="Добавление" FontSize="15" Click="AddCriteriaBut_Click" Margin="594,-3,0.4,0" Height="31" VerticalAlignment="Bottom" Style="{StaticResource RoundButtonTemplate}" Width="96"/>
-            <Button x:Name="TransitionStudent" HorizontalAlignment="Center" Background="#a6caf0" Content="Студенты" FontSize="15" Width="130" Click="TransitionStudent_Click" Margin="10,20.4,550.4,0" Grid.Row="2" RenderTransformOrigin="0.5,0.5" Style="{StaticResource RoundButtonTemplate}"></Button>
-            <Button x:Name="TransitionTeacher" HorizontalAlignment="Center" Background="#a6caf0"  Content="Преподаватели" FontSize="15" Width="130" Click="TransitionTeacher_Click" Margin="161,20.4,399.4,0" Grid.Row="2" RenderTransformOrigin="0.5,0.5" Style="{StaticResource RoundButtonTemplate}"></Button>
+            <Button x:Name="AddCriteriaBut" FontFamily="Microsoft Sans Serif" HorizontalAlignment="Center" Background="#a6caf0" Content="Добавление" FontSize="15" Click="AddCriteriaBut_Click" Margin="594,-3,0.4,0" Height="31" VerticalAlignment="Bottom" Style="{StaticResource RoundButtonTemplate}" Width="96"/>
+            <Button x:Name="TransitionStudent" FontFamily="Microsoft Sans Serif" HorizontalAlignment="Center" Background="#a6caf0" Content="Студенты" FontSize="15" Width="130" Click="TransitionStudent_Click" Margin="10,20.4,550.4,0" Grid.Row="2" RenderTransformOrigin="0.5,0.5" Style="{StaticResource RoundButtonTemplate}"></Button>
+            <Button x:Name="TransitionTeacher" FontFamily="Microsoft Sans Serif" HorizontalAlignment="Center" Background="#a6caf0"  Content="Преподаватели" FontSize="15" Width="130" Click="TransitionTeacher_Click" Margin="161,20.4,399.4,0" Grid.Row="2" RenderTransformOrigin="0.5,0.5" Style="{StaticResource RoundButtonTemplate}"></Button>
         </Grid>
     </Border>
 </Window>

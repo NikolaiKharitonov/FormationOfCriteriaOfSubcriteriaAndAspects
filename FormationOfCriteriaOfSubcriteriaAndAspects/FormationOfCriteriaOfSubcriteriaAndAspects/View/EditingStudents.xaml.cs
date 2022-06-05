@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -55,16 +56,19 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
                 MessageBox.Show("Email не должен содержать больше 30 букв");
                 return;
             }
-            if (TelephoneTextBox.Text.Length > 11)
+            Regex ball = new Regex(@"\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");  //Проверка email
+            if (ball.IsMatch(EmailTextBox.Text) == false)
             {
-                MessageBox.Show("Телефон должен содержать 11 цифр");
+                MessageBox.Show("Нужен Email адрес");
                 return;
             }
-            if (TelephoneTextBox.Text.Length < 11)
+            Regex tel = new Regex(@"^(?=.*[0-9])\S{11,11}$");  //Проверка номера телефона
+            if (tel.IsMatch(TelephoneTextBox.Text) == false)
             {
-                MessageBox.Show("Телефон должен содержать 11 цифр");
+                MessageBox.Show("Номер должен содержать 11 цифр и числовой формат");
                 return;
             }
+
             criteria.FirstName = FirstNameTextBox.Text;
             criteria.LastName = LastNameTextBox.Text;
             criteria.Patronymic = PatronymicTextBox.Text;

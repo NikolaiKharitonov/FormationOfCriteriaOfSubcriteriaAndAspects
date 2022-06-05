@@ -20,7 +20,7 @@
             </Grid.RowDefinitions>
             <TextBlock x:Name="Header" Grid.Row="0" Text="Формирование Подкритерия" FontFamily="Microsoft Sans Serif" FontSize="20" HorizontalAlignment="Center" Margin="205,-28,131,28" Width="280"/>
             <TextBlock x:Name="SubtitleLabel" FontFamily="Microsoft Sans Serif"  FontSize="15" HorizontalAlignment="Center" Margin="178,5,113,5" Width="325" TextAlignment="Center"/>
-            <DataGrid x:Name="DataGridSubCriteria" AutoGenerateColumns="False" BorderThickness="0" Margin="0,11,0.4,0.6" Grid.Row="1" IsReadOnly="True" Grid.ColumnSpan="2">
+            <DataGrid x:Name="DataGridSubCriteria" AutoGenerateColumns="False" FontFamily="Microsoft Sans Serif" BorderThickness="0" Margin="0,11,0.4,0.6" Grid.Row="1" IsReadOnly="True" Grid.ColumnSpan="2">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Название Субкритерия" FontSize="15" Width="475" Binding="{Binding Title}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Общие баллы" FontSize="15" Width="86" Binding="{Binding TotalScoresForAllAspects, StringFormat={}{0:N2}}"></DataGridTextColumn>
@@ -54,7 +54,7 @@
                 </DataGrid.Columns>
             </DataGrid>
 
-            <Button x:Name="AddCriteriaBut" Content="Добавление" Background="#a6caf0" FontSize="15" Click="AddCriteriaBut_Click" Margin="594,-28,0.4,28" Grid.ColumnSpan="2" Width="96" Style="{StaticResource RoundButtonTemplate}"/>
+            <Button x:Name="AddCriteriaBut" Content="Добавление" Background="#a6caf0" FontFamily="Microsoft Sans Serif" FontSize="15" Click="AddCriteriaBut_Click" Margin="594,-28,0.4,28" Grid.ColumnSpan="2" Width="96" Style="{StaticResource RoundButtonTemplate}"/>
         </Grid>
     </Border>
 </Window>

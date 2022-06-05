@@ -1,0 +1,6 @@
+E:\Visual2019practix\FormationOfCriteriaOfSubcriteriaAndAspects\Tests\bin\Debug\Tests.dll
+E:\Visual2019practix\FormationOfCriteriaOfSubcriteriaAndAspects\Tests\bin\Debug\Tests.pdb
+E:\Visual2019practix\FormationOfCriteriaOfSubcriteriaAndAspects\Tests\obj\Debug\Tests.csproj.AssemblyReference.cache
+E:\Visual2019practix\FormationOfCriteriaOfSubcriteriaAndAspects\Tests\obj\Debug\Tests.csproj.CoreCompileInputs.cache
+E:\Visual2019practix\FormationOfCriteriaOfSubcriteriaAndAspects\Tests\obj\Debug\Tests.dll
+E:\Visual2019practix\FormationOfCriteriaOfSubcriteriaAndAspects\Tests\obj\Debug\Tests.pdb
