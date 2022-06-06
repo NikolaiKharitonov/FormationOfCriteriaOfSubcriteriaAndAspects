@@ -55,6 +55,24 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
                 MessageBox.Show("Email не должен содержать больше 30 букв");
                 return;
             }
+            Regex surname = new Regex(@"^[А-Яа-я]+$");
+            if (surname.IsMatch(FirstNameTextBox.Text) == false)
+            {
+                MessageBox.Show("Фамилия должна содержать буквы");
+                return;
+            }
+            Regex name = new Regex(@"^[А-Яа-я]+$");
+            if (name.IsMatch(LastNameTextBox.Text) == false)
+            {
+                MessageBox.Show("Имя должно содержать буквы");
+                return;
+            }
+            Regex fuo = new Regex(@"^[А-Яа-я]+$");
+            if (fuo.IsMatch(PatronymicTextBox.Text) == false)
+            {
+                MessageBox.Show("Отчество должно содержать буквы");
+                return;
+            }
             Regex ball = new Regex(@"\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([com]\w+)*");  //Проверка email
             if (ball.IsMatch(EmailTextBox.Text) == false)
             {

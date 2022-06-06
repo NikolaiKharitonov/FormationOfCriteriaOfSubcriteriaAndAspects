@@ -44,6 +44,7 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
                 }
             }
 
+
             if (TitleTextBox.Text.Length > 100)
             {
                 MessageBox.Show("Критерий не может содержать больше 100 букв");
@@ -75,11 +76,6 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = false;
-        }
-
-        private void ValueTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            
         }
     }
 }

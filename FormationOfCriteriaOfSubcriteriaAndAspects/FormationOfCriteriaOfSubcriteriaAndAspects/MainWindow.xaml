@@ -19,7 +19,7 @@
                 <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
             <TextBlock x:Name="Header" Grid.Row="0" Text="Формирование критериев" FontFamily="Microsoft Sans Serif" FontSize="20" HorizontalAlignment="Center" Margin="220,0,220.4,2.8" Width="250"/>
-            <DataGrid x:Name="DataGridCriteria" FontFamily="Microsoft Sans Serif" AutoGenerateColumns="False" BorderThickness="0" IsReadOnly="True" Margin="0,11.2,0.4,0.2" Grid.Row="1">
+            <DataGrid x:Name="DataGridCriteria" AutoGenerateColumns="False" BorderThickness="0" IsReadOnly="True" Margin="0,11.2,0.4,0.2" Grid.Row="1">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Название критерия" Width="420" FontSize="15" Binding="{Binding Title}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Максимальный балл" Width="158" FontSize="15" Binding="{Binding MaxValue, StringFormat={}{0:N2}}"></DataGridTextColumn>

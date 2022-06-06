@@ -8,20 +8,23 @@
         Title="Aspects" Height="510" Width="800" MinWidth="800" MinHeight="510"  WindowStartupLocation="CenterScreen">
     <Border MinWidth="400" Margin="15,15,15,15" Background="#F0F0F0" VerticalAlignment="Top" Padding="30" MaxWidth="750" CornerRadius="10" Height="440">
         <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="307*"/>
+                <ColumnDefinition Width="38*"/>
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="28"/>
                 <RowDefinition Height="282"/>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
-            <TextBlock x:Name="Header" Grid.Row="0"  Text="Формирование аспектов" FontFamily="Microsoft Sans Serif" FontSize="20" HorizontalAlignment="Center" Margin="205,-28,205.4,28" Width="250"/>
-            <TextBlock x:Name="SubtitleLabel" FontFamily="Microsoft Sans Serif"  FontSize="15" HorizontalAlignment="Center" Margin="10,5,10.4,5" Width="670" TextAlignment="Center"/>
-            <DataGrid x:Name="DataGridAspects" BorderThickness="0" FontFamily="Microsoft Sans Serif" Margin="0,11.2,0.4,0.2" AutoGenerateColumns="False" Grid.Row="1" IsReadOnly="True">
+            <TextBlock x:Name="Header" Grid.Row="0"  Text="Формирование аспектов" FontFamily="Microsoft Sans Serif" FontSize="20" HorizontalAlignment="Center" Margin="220,-28,144.4,28" Width="250"/>
+            <TextBlock x:Name="SubtitleLabel" FontFamily="Microsoft Sans Serif"  FontSize="15" HorizontalAlignment="Center" Margin="10,5,10.4,5" Width="670" TextAlignment="Center" Grid.ColumnSpan="2"/>
+            <DataGrid x:Name="DataGridAspects" BorderThickness="0" Margin="0,11,0.4,0.6" AutoGenerateColumns="False" Grid.Row="1" IsReadOnly="True" Grid.ColumnSpan="2">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Название аспектов" Width="270" FontSize="15" Binding="{Binding Title}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Название аспектов" Width="325" FontSize="15" Binding="{Binding Title}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Количество баллов" Width="120" FontSize="15" Binding="{Binding NumberOfPoints, StringFormat={}{0:N2}}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Дополнительное описание" Width="170" FontSize="15" Binding="{Binding Description}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="судьи" Binding="{Binding TypeAspect.Title}"></DataGridTextColumn>
                     <DataGridTemplateColumn Width="35">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
@@ -40,18 +43,10 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTemplateColumn Width="35">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button x:Name="AspectSudiuBtn" BorderThickness="0" ToolTip="Судейские аспекты" Click="AspectSudiuBtn_Click">
-                                    <Image Source="page_edit-ver-47370A0500CB9048A5110BD04047BDAB.png" Width="20"></Image>
-                                </Button>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
+                    
                 </DataGrid.Columns>
             </DataGrid>
-            <Button x:Name="AddCriteriaBut" Content="Добавление" FontFamily="Microsoft Sans Serif" Background="#a6caf0" FontSize="15" Height="30" Click="AddCriteriaBut_Click" Margin="594,-31,0.4,29" Width="96" Style="{StaticResource RoundButtonTemplate}"/>
+            <Button x:Name="AddCriteriaBut" Content="Добавление" FontFamily="Microsoft Sans Serif" Background="#a6caf0" FontSize="15" Height="30" Click="AddCriteriaBut_Click" Margin="594,-31,0.4,29" Width="96" Style="{StaticResource RoundButtonTemplate}" Grid.ColumnSpan="2"/>
             
         </Grid>
     </Border>

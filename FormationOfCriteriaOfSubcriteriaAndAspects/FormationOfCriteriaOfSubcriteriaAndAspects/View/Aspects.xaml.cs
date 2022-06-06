@@ -76,5 +76,10 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
         {
            
         }
+
+        private void AddjjudgBut_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
     }
 }

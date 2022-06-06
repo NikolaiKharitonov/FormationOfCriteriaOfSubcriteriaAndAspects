@@ -56,6 +56,24 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
                 MessageBox.Show("Email не должен содержать больше 30 букв");
                 return;
             }
+            Regex surname = new Regex(@"^[А-Яа-я]+$");
+            if (surname.IsMatch(FirstNameTextBox.Text) == false)
+            {
+                MessageBox.Show("Фамилия должна содержать буквы");
+                return;
+            }
+            Regex name = new Regex(@"^[А-Яа-я]+$");
+            if (name.IsMatch(LastNameTextBox.Text) == false)
+            {
+                MessageBox.Show("Имя должно содержать буквы");
+                return;
+            }
+            Regex fuo = new Regex(@"^[А-Яа-я]+$");
+            if (fuo.IsMatch(PatronymicTextBox.Text) == false)
+            {
+                MessageBox.Show("Отчество должно содержать буквы");
+                return;
+            }
             Regex ball = new Regex(@"\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");  //Проверка email
             if (ball.IsMatch(EmailTextBox.Text) == false)
             {
@@ -66,6 +84,11 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
             if (tel.IsMatch(TelephoneTextBox.Text) == false)
             {
                 MessageBox.Show("Номер должен содержать 11 цифр и числовой формат");
+                return;
+            }
+            if (string.IsNullOrEmpty(GroupStudentComboBox.Text))
+            {
+                MessageBox.Show("Укажите группу");
                 return;
             }
 
