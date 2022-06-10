@@ -29,15 +29,12 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
             SubtitleLabel.Text = crud.Title;
             LoadDataSubCriteria();
         }
-
-
-        public void LoadDataSubCriteria()
+        public void LoadDataSubCriteria() //Загрузка Данных
         {
             var criteriaList = Controller.Connect.GetContext().SubCriteria.Where(x => x.IdCriteria == criteria.IdCriteria).ToList();
             DataGridSubCriteria.ItemsSource = criteriaList;
         }
-
-        private void AspectButton_Click(object sender, RoutedEventArgs e)
+        private void AspectButton_Click(object sender, RoutedEventArgs e) //Переход на аспекты
         {
             View.Aspects add = new View.Aspects(DataGridSubCriteria.SelectedItem as Model.SubCriteria);
             if (add.ShowDialog() == true)
@@ -46,8 +43,7 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
                 LoadDataSubCriteria();
             }
         }
-
-        private void AddCriteriaBut_Click(object sender, RoutedEventArgs e)
+        private void AddCriteriaBut_Click(object sender, RoutedEventArgs e) //Переход на добавление субкритерия
         {
             View.AddingSubcriteria add = new View.AddingSubcriteria(criteria);
             if (add.ShowDialog() == true)
@@ -55,8 +51,7 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
                 LoadDataSubCriteria();
             }
         }
-
-        private void EditCriteria_Click(object sender, RoutedEventArgs e)
+        private void EditCriteria_Click(object sender, RoutedEventArgs e) //Переход на редактирование субкритерия
         {
             View.EditingSubcriteria add = new View.EditingSubcriteria(DataGridSubCriteria.SelectedItem as Model.SubCriteria);
             if (add.ShowDialog() == true)
@@ -64,7 +59,7 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
                 LoadDataSubCriteria();
             }
         }
-        private void RemoveCriteria_Click(object sender, RoutedEventArgs e)
+        private void RemoveCriteria_Click(object sender, RoutedEventArgs e) //Удаление
         {
             var selectedSap = DataGridSubCriteria.SelectedItem as Model.SubCriteria;
             var aspects = Controller.Connect.GetContext().Aspect.Where(x => x.IdSubCriteria == selectedSap.IdSubCriteria).ToList();

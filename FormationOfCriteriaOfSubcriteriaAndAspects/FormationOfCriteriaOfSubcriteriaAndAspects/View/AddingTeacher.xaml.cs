@@ -38,24 +38,24 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
                     MessageBox.Show("Фамилия, имя и отчество не должны содержать больше 30 букв");
                     return;
                 }
-                if(EmailTextBox.Text.Length > 30)
+                if(EmailTextBox.Text.Length > 30) //Проверка e-mail
                 {
                     MessageBox.Show("Email не должен содержать больше 30 букв");
                     return;
                 }
-                Regex surname = new Regex(@"^[А-Яа-я]+$");
+                Regex surname = new Regex(@"^[А-Яа-я]+$"); //Проверка фамилии
                 if (surname.IsMatch(FirstNameTextBox.Text) == false)
                 {
                     MessageBox.Show("Фамилия должна содержать буквы");
                     return;
                 }
-                Regex name = new Regex(@"^[А-Яа-я]+$");
+                Regex name = new Regex(@"^[А-Яа-я]+$"); //Проверка имени
                 if (name.IsMatch(LastNameTextBox.Text) == false)
                 {
                     MessageBox.Show("Имя должно содержать буквы");
                     return;
                 }
-                Regex fuo = new Regex(@"^[А-Яа-я]+$");
+                Regex fuo = new Regex(@"^[А-Яа-я]+$"); //Проверка отчества
                 if (fuo.IsMatch(PatronymicTextBox.Text) == false)
                 {
                     MessageBox.Show("Отчество должно содержать буквы");
@@ -83,7 +83,7 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
             }
         }
 
-        private void cancellationTeachersButton_Click(object sender, RoutedEventArgs e)
+        private void cancellationTeachersButton_Click(object sender, RoutedEventArgs e) //закрытие
         {
             this.DialogResult = false;
         }

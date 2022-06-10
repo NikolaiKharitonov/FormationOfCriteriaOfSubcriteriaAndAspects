@@ -24,13 +24,12 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
             InitializeComponent();
             LoadDataTeachers();
         }
-        public void LoadDataTeachers()
+        public void LoadDataTeachers() //Загрузка Данных
         {
             var criteriaList = Controller.Connect.GetContext().Teachers.ToList();
             DataGridTeacher.ItemsSource = criteriaList;
         }
-
-        private void RemoveTeacherButton_Click(object sender, RoutedEventArgs e)
+        private void RemoveTeacherButton_Click(object sender, RoutedEventArgs e) //Удаление
         {
             var delete = DataGridTeacher.SelectedItem as Model.Teachers;
             if (MessageBox.Show("Удалить?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
@@ -48,25 +47,13 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
                 }
             }
         }
-
-        private void ComboBoxStatusTeacher_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void AddCriteriaBut_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void NazadTeachersButton_Click(object sender, RoutedEventArgs e)
+        private void NazadTeachersButton_Click(object sender, RoutedEventArgs e) //Кнопка назад
         {
             MainWindow add = new MainWindow();
             add.Show();
             this.Close();
         }
-
-        private void AddTeachersButton_Click(object sender, RoutedEventArgs e)
+        private void AddTeachersButton_Click(object sender, RoutedEventArgs e) //Переход на добавление преподавателей
         {
             View.AddingTeacher save = new View.AddingTeacher();
             if (save.ShowDialog() == true)
@@ -74,8 +61,7 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
                 LoadDataTeachers();
             }
         }
-
-        private void RegactorStudentButton_Click(object sender, RoutedEventArgs e)
+        private void RegactorStudentButton_Click(object sender, RoutedEventArgs e) //Переход на редактирование преподавателей
         {
             View.EditingTeacher save = new View.EditingTeacher(DataGridTeacher.SelectedItem as Model.Teachers);
             if (save.ShowDialog() == true)

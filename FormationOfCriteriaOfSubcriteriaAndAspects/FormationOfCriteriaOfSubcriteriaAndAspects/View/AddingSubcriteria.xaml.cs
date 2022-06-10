@@ -47,7 +47,7 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
                 return;
             }
 
-            if (TitleTextBox.Text.Length > 100)
+            if (TitleTextBox.Text.Length > 100) //проверка субкритерия
             {
                 MessageBox.Show("Субкритерий не может содержать больше 100 букв");
                 return;
@@ -78,14 +78,9 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
             }
         }
 
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        private void CancelButton_Click(object sender, RoutedEventArgs e) //закрытие
         {
             this.DialogResult = false;
-        }
-
-        private void TotalScoresForAllAspectsTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
         }
     }
 }

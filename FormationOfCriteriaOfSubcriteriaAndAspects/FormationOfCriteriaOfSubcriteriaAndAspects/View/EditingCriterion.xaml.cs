@@ -27,7 +27,7 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
             _criteria = crit;
             CriteriaBD();
         }
-        public void CriteriaBD()
+        public void CriteriaBD() //Загрузка Данных
         {
             var searchCritera = Controller.Connect.GetContext().Criteria.Where(x => x.IdCriteria == _criteria.IdCriteria).FirstOrDefault();
             TitleTextBox.Text = searchCritera.Title;
@@ -55,7 +55,7 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
                 MessageBox.Show("Макс. балл должен быть от 1 до 100 и содержать числовой формат");
                 return;
             }
-            if (TitleTextBox.Text.Length > 100)
+            if (TitleTextBox.Text.Length > 100) //Проверка на критерий
             {
                 MessageBox.Show("Критерий не может содержать больше 100 букв");
                 return;
@@ -66,7 +66,7 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
             this.DialogResult = true;
         }
 
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        private void CancelButton_Click(object sender, RoutedEventArgs e) //Закрытие
         {
             this.DialogResult = false;
         }

@@ -79,12 +79,12 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
             }
         }
 
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        private void CancelButton_Click(object sender, RoutedEventArgs e) //закрытие
         {
             this.DialogResult = false;
         }
 
-        private void DescriptionButton_Click(object sender, RoutedEventArgs e)
+        private void DescriptionButton_Click(object sender, RoutedEventArgs e) //добавление дополнительного поля
         {
             if (TitleTextBox.Text == "" || NumberOfPointsTextBox.Text == "")
             {
@@ -98,16 +98,11 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
             }
         }
 
-        private void RemoveDescriptionlButton_Click(object sender, RoutedEventArgs e)
+        private void RemoveDescriptionlButton_Click(object sender, RoutedEventArgs e) //Скрытие
         {
             blok2.Visibility = Visibility.Hidden;
             DescriptionTextBox.Visibility = Visibility.Hidden;
             RemoveDescriptionlButton.Visibility = Visibility.Hidden;
-        }
-
-        private void JudicialAspectsButton_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

@@ -29,13 +29,13 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
             LoadDataAspect();
 
         }
-        public void LoadDataAspect()
+        public void LoadDataAspect() //Загрузка Данных
         {
             var criteriaList = Controller.Connect.GetContext().Aspect.Where(x => x.IdSubCriteria == criteria.IdSubCriteria).ToList();
             DataGridAspects.ItemsSource = criteriaList;
         }
 
-        private void AddCriteriaBut_Click(object sender, RoutedEventArgs e)
+        private void AddCriteriaBut_Click(object sender, RoutedEventArgs e) //переход на добавление аспекта
         {
             View.AddingAspects add = new View.AddingAspects(criteria);
             if (add.ShowDialog() == true)
@@ -44,7 +44,7 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
             }
         }
 
-        private void EditCriteria_Click(object sender, RoutedEventArgs e)
+        private void EditCriteria_Click(object sender, RoutedEventArgs e) //переход на редактирование аспекта
         {
             View.EditingAspects add = new View.EditingAspects(DataGridAspects.SelectedItem as Model.Aspect);
             if (add.ShowDialog() == true)
@@ -53,7 +53,7 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
             }
         }
 
-        private void RemoveCriteria_Click(object sender, RoutedEventArgs e)
+        private void RemoveCriteria_Click(object sender, RoutedEventArgs e) //удаление аспекта
         {
             var delete = DataGridAspects.SelectedItem as Model.Aspect;
             if (MessageBox.Show("Удалить?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
@@ -70,16 +70,6 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
                     MessageBox.Show(ex.Message.ToString());
                 }
             }
-        }
-
-        private void AspectSudiuBtn_Click(object sender, RoutedEventArgs e)
-        {
-           
-        }
-
-        private void AddjjudgBut_Click(object sender, RoutedEventArgs e)
-        {
-           
         }
     }
 }

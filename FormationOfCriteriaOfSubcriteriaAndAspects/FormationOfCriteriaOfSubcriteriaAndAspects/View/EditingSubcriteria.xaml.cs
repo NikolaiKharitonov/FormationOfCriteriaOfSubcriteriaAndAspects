@@ -27,7 +27,7 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
             subcriteria = crud;
             CriteriaBD();
         }
-        public void CriteriaBD()
+        public void CriteriaBD() //Загрузка Данных
         {
             var searchCritera = Controller.Connect.GetContext().SubCriteria.Where(x => x.IdSubCriteria == subcriteria.IdSubCriteria).FirstOrDefault();
             TitleTextBox.Text = searchCritera.Title;
@@ -55,7 +55,7 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
             }
             if (TitleTextBox.Text.Length > 100)
             {
-                MessageBox.Show("Субкритерий не может содержать больше 100 букв");
+                MessageBox.Show("Субкритерий не может содержать больше 100 букв"); //Проверка на субкритерий
                 return;
             }
 
@@ -65,7 +65,7 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
             this.DialogResult = true;
         }
 
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        private void CancelButton_Click(object sender, RoutedEventArgs e) //Закрытие
         {
             this.DialogResult = false;
         }

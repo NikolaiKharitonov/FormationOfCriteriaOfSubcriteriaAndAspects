@@ -22,11 +22,10 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
         public StudentsCRUD()
         {
             InitializeComponent();
-
             LoadDataStudent();
         }
 
-        private void RemoveStudentButton_Click(object sender, RoutedEventArgs e)
+        private void RemoveStudentButton_Click(object sender, RoutedEventArgs e) //удаление
         {
         var delete = DataGridStudents.SelectedItem as Model.Student;
            if(MessageBox.Show("Удалить?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
@@ -44,18 +43,12 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
                 }   
             }       
         }
-        public void LoadDataStudent()
+        public void LoadDataStudent() //Загрузка Данных
         {
             var criteriaList = Controller.Connect.GetContext().Student.ToList();
             DataGridStudents.ItemsSource = criteriaList;
         }
-
-        private void ComboBoxStatusStudent_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void AddStudent_Click(object sender, RoutedEventArgs e)
+        private void AddStudent_Click(object sender, RoutedEventArgs e) //Переход на добавление студентов
         {
             View.AddingStudents save = new View.AddingStudents();
             if (save.ShowDialog() == true)
@@ -63,26 +56,19 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
                 LoadDataStudent();
             }
         }
-
-        private void NazadStudent_Click(object sender, RoutedEventArgs e)
+        private void NazadStudent_Click(object sender, RoutedEventArgs e) //Кнопка назад на главную страницу
         {
             MainWindow add = new MainWindow();
             add.Show();
             this.Close();
         }
-
-        private void RegactorStudentButton_Click(object sender, RoutedEventArgs e)
+        private void RegactorStudentButton_Click(object sender, RoutedEventArgs e) //переход на редактирование студентов
         {
             View.EditingStudents save = new View.EditingStudents(DataGridStudents.SelectedItem as Model.Student);
             if (save.ShowDialog() == true)
             {
                 LoadDataStudent();
             }
-        }
-
-        private void DataGridStudents_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
     }
 }

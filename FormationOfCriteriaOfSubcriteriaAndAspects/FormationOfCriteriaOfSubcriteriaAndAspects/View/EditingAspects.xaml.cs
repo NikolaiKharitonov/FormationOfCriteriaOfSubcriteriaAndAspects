@@ -27,7 +27,7 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
             _aspect = AspectCrud;
             AspectCriteriaBD();
         }
-        public void AspectCriteriaBD()
+        public void AspectCriteriaBD() //Загрузка Данных
         {
             var searchCritera = Controller.Connect.GetContext().Aspect.Where(x => x.IdAspect == _aspect.IdAspect).FirstOrDefault();
             TitleTextBox.Text = searchCritera.Title;
@@ -54,12 +54,12 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
                 MessageBox.Show("Макс. балл должен равняться субкритерию по баллам и содержать числовой формат");
                 return;
             }
-            if (TitleTextBox.Text.Length > 100)
+            if (TitleTextBox.Text.Length > 100) //Проверка аспекта
             {
                 MessageBox.Show("Аспект не может содержать больше 100 букв");
                 return;
             }
-            if (DescriptionTextBox.Text.Length > 100)
+            if (DescriptionTextBox.Text.Length > 100) //Проверка дополнительно описания
             {
                 MessageBox.Show("Дополнительное описание не может содержать больше 100 букв");
                 return;
@@ -72,19 +72,19 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
                 this.DialogResult = true;
         }
 
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        private void CancelButton_Click(object sender, RoutedEventArgs e) //закрытие
         {
             this.DialogResult = false;
         }
 
-        private void RemoveDescriptionlButton_Click(object sender, RoutedEventArgs e)
+        private void RemoveDescriptionlButton_Click(object sender, RoutedEventArgs e) //скрытие
         {
             blok2.Visibility = Visibility.Hidden;
             DescriptionTextBox.Visibility = Visibility.Hidden;
             RemoveDescriptionlButton.Visibility = Visibility.Hidden;
         }
 
-        private void DescriptionButton_Click(object sender, RoutedEventArgs e)
+        private void DescriptionButton_Click(object sender, RoutedEventArgs e) //Открытие дополнительного описания, если все поля заполнены
         {
             if (TitleTextBox.Text == "" || NumberOfPointsTextBox.Text == "")
             {
@@ -96,11 +96,6 @@ namespace FormationOfCriteriaOfSubcriteriaAndAspects.View
                 DescriptionTextBox.Visibility = Visibility.Visible;
                 RemoveDescriptionlButton.Visibility = Visibility.Visible;
             }
-        }
-
-        private void AddButton_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
